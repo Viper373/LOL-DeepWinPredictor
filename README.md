@@ -25,7 +25,8 @@
 │  │  BILSTM_Att.pt           # 训练好的模型文件
 │  │  BILSTM_Att.py           # 模型定义与实现
 │  │  predict.py              # 模型预测
-│  │  spark_yarn.py           # Spark集群提交
+│  │  predict——producer.py    # RockctMQ生产者
+│  │  predict——consumer.py    # RockctMQ消费者
 │  │  test.py                 # 模型测试
 │  │  train.py                # 模型训练
 │
@@ -82,7 +83,7 @@
 - 🌶Python 3.10.7+
 - 🌽Flask
 - 🥕PyTorch
-- 🍅其他依赖请参考 `requirements.txt`（若有）。
+- 🍅其他依赖请参考 `requirements.txt`
 
 ## 🧬 安装依赖（建议使用虚拟环境）
 
