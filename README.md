@@ -28,6 +28,8 @@
 │  │  predict——producer.py    # RockctMQ生产者
 │  │  predict——consumer.py    # RockctMQ消费者
 │  │  test.py                 # 模型测试
+│  │  test——producer.py       # RockctMQ生产者
+│  │  test——consumer.py       # RockctMQ消费者
 │  │  train.py                # 模型训练
 │
 ├─crawling_data               # 数据爬取与处理
