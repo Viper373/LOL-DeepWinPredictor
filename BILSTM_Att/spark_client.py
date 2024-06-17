@@ -1,7 +1,32 @@
 import torch
 import numpy as np
-from torch.utils.data import DataLoader
+from torch.utils.data import Dataset, DataLoader
+from pyspark.sql import SparkSession
 from BILSTM_Att import BiLSTMModelWithAttention, LOLDataset
+
+# 创建SparkSession
+spark = SparkSession.builder \
+    .appName("BiLSTM_Predict") \
+    .master("spark://master:7077") \
+    .config("spark.executor.memory", "2g") \
+    .config("spark.executor.cores", "2") \
+    .config("spark.num.executors", "4") \
+    .getOrCreate()
+
+
+# 修改的LOLDataset类
+class LOLDataset(Dataset):
+    def __init__(self, data):
+        self.data = torch.tensor(data, dtype=torch.float32)  # 转换为张量
+        self.X = self.data.view(self.data.size(0), 1, self.data.size(1))  # 调整形状
+
+    def __len__(self):
+        return len(self.data)
+
+    def __getitem__(self, idx):
+        X = self.X[idx]  # 获取张量
+        return X
+
 
 predict_data = np.array([[137, 57,
                           0, 897, 0.442805,
@@ -20,6 +45,7 @@ input_size = predict_data.shape[1]
 hidden_size = 1024
 num_layers = 2
 output_size = 1
+
 # 加载测试数据
 test_dataset = LOLDataset(predict_data)  # 假设test_data是测试数据，格式与训练数据类似
 test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
@@ -44,3 +70,6 @@ B_win = (1 - predictions[0]) * 100
 
 # 输出预测结果
 print(f"A队胜率：{A_win:.2f}%, B队胜率：{B_win:.2f}%, 胜利情况：{predictions_binary[0]}")
+
+# 关闭SparkSession
+spark.stop()
