@@ -11,6 +11,9 @@
 - 🌵本项目旨在使用双向LSTM（BiLSTM_Att）结合注意力机制预测英雄联盟比赛的胜率。数据来自LPL赛事和玩加电竞，共计约32900条比赛记录。四大二分类指标均达到95%左右。
 模型基于Pytorch构建，依据双方阵容选择来预测比赛胜率，通过注意力机制来提取关键信息，提高模型的准确性。
 
+## 🚙 在线体验
+- 🚀https://lol.viper3.top/predict
+
 ## 🛠 项目结构
 
 ```plaintext
@@ -25,8 +28,11 @@
 │  │  BILSTM_Att.pt           # 训练好的模型文件
 │  │  BILSTM_Att.py           # 模型定义与实现
 │  │  predict.py              # 模型预测
-│  │  spark_yarn.py           # Spark集群提交
+│  │  predict——producer.py    # RockctMQ生产者
+│  │  predict——consumer.py    # RockctMQ消费者
 │  │  test.py                 # 模型测试
+│  │  test——producer.py       # RockctMQ生产者
+│  │  test——consumer.py       # RockctMQ消费者
 │  │  train.py                # 模型训练
 │
 ├─crawling_data               # 数据爬取与处理
@@ -82,7 +88,7 @@
 - 🌶Python 3.10.7+
 - 🌽Flask
 - 🥕PyTorch
-- 🍅其他依赖请参考 `requirements.txt`（若有）。
+- 🍅其他依赖请参考 `requirements.txt`
 
 ## 🧬 安装依赖（建议使用虚拟环境）
 
