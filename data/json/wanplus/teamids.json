@@ -1,0 +1,1977 @@
+[
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e255289"},
+    "teamid": "4631",
+    "teamname": "GAM"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e25528a"},
+    "teamid": "6935",
+    "teamname": "PSG"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e25528b"},
+    "teamid": "7400",
+    "teamname": "BDS"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e25528c"},
+    "teamid": "7411",
+    "teamname": "CFO"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e25528d"},
+    "teamid": "7325",
+    "teamname": "TW"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e25528e"},
+    "teamid": "7320",
+    "teamname": "LLL"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e25528f"},
+    "teamid": "4367",
+    "teamname": "DFM"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e255290"},
+    "teamid": "4522",
+    "teamname": "R7"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e255291"},
+    "teamid": "64",
+    "teamname": "T1"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e255292"},
+    "teamid": "34",
+    "teamname": "FNC"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e255295"},
+    "teamid": "5356",
+    "teamname": "TES"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e255296"},
+    "teamid": "4249",
+    "teamname": "FLY"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e255299"},
+    "teamid": "7326",
+    "teamname": "EST"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e25529b"},
+    "teamid": "194",
+    "teamname": "GEN"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e25529d"},
+    "teamid": "5147",
+    "teamname": "DK"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e25529e"},
+    "teamid": "1455",
+    "teamname": "NRG"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e25529f"},
+    "teamid": "4043",
+    "teamname": "JDG"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2552a0"},
+    "teamid": "5355",
+    "teamname": "BLG"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2552a1"},
+    "teamid": "187",
+    "teamname": "KT"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2552a2"},
+    "teamid": "4276",
+    "teamname": "WBG"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2552a3"},
+    "teamid": "200",
+    "teamname": "LNG"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2552a5"},
+    "teamid": "1366",
+    "teamname": "MAD"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2552a6"},
+    "teamid": "9",
+    "teamname": "C9"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2552a8"},
+    "teamid": "262",
+    "teamname": "G2"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2552a9"},
+    "teamid": "30",
+    "teamname": "TL"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2552b4"},
+    "teamid": "6643",
+    "teamname": "NIP"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2552b7"},
+    "teamid": "5341",
+    "teamname": "AL"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2552b8"},
+    "teamid": "63",
+    "teamname": "OMG"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2552b9"},
+    "teamid": "5335",
+    "teamname": "FPX"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2552bb"},
+    "teamid": "272",
+    "teamname": "TT"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2552bc"},
+    "teamid": "197",
+    "teamname": "IG"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2552bd"},
+    "teamid": "198",
+    "teamname": "LGD"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2552be"},
+    "teamid": "271",
+    "teamname": "WE"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2552bf"},
+    "teamid": "208",
+    "teamname": "RNG"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2552c0"},
+    "teamid": "204",
+    "teamname": "RA"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2552c1"},
+    "teamid": "68",
+    "teamname": "EDG"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2552c2"},
+    "teamid": "6921",
+    "teamname": "UP"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2552d0"},
+    "teamid": "4274",
+    "teamname": "MAX"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2552d3"},
+    "teamid": "7481",
+    "teamname": "MJ"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2552d5"},
+    "teamid": "7483",
+    "teamname": "BUG"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2552dc"},
+    "teamid": "5308",
+    "teamname": "GG"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2552ff"},
+    "teamid": "7433",
+    "teamname": "MOJ"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e255316"},
+    "teamid": "1039",
+    "teamname": "DRX"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e25531c"},
+    "teamid": "6654",
+    "teamname": "RGE"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e25531f"},
+    "teamid": "5312",
+    "teamname": "100"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e255321"},
+    "teamid": "13",
+    "teamname": "EG"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e255329"},
+    "teamid": "7331",
+    "teamname": "BYG"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e25532b"},
+    "teamid": "6455",
+    "teamname": "SGB"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e25532d"},
+    "teamid": "4579",
+    "teamname": "IW"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e25532e"},
+    "teamid": "1031",
+    "teamname": "CHF"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e25532f"},
+    "teamid": "4532",
+    "teamname": "ISG"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e25534b"},
+    "teamid": "4396",
+    "teamname": "RED"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e25534e"},
+    "teamid": "7406",
+    "teamname": "AZE"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e25534f"},
+    "teamid": "6945",
+    "teamname": "ORD"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e255351"},
+    "teamid": "4369",
+    "teamname": "RJ"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e255352"},
+    "teamid": "6957",
+    "teamname": "SG"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e255353"},
+    "teamid": "6954",
+    "teamname": "BC"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e255354"},
+    "teamid": "6956",
+    "teamname": "SHG"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e255355"},
+    "teamid": "6955",
+    "teamname": "CGA"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e255356"},
+    "teamid": "6953",
+    "teamname": "AXZ"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e255357"},
+    "teamid": "6952",
+    "teamname": "V3"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e25535a"},
+    "teamid": "281",
+    "teamname": "DIG"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e25535e"},
+    "teamid": "3",
+    "teamname": "CLG"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e25535f"},
+    "teamid": "1456",
+    "teamname": "IMT"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e255361"},
+    "teamid": "280",
+    "teamname": "TSM"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e255362"},
+    "teamid": "4580",
+    "teamname": "AUR"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e255363"},
+    "teamid": "6951",
+    "teamname": "5R"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e255365"},
+    "teamid": "69",
+    "teamname": "DP"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e255366"},
+    "teamid": "7334",
+    "teamname": "PCE"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e255367"},
+    "teamid": "2587",
+    "teamname": "SMB"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e255369"},
+    "teamid": "217",
+    "teamname": "BJK"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e25536a"},
+    "teamid": "6946",
+    "teamname": "PGG"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e25536b"},
+    "teamid": "4578",
+    "teamname": "GS"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e25536c"},
+    "teamid": "4540",
+    "teamname": "DW"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e25536d"},
+    "teamid": "4575",
+    "teamname": "FB"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e25536e"},
+    "teamid": "7404",
+    "teamname": "KNG"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e25536f"},
+    "teamid": "7327",
+    "teamname": "NSR"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e255370"},
+    "teamid": "6656",
+    "teamname": "MEC"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e255371"},
+    "teamid": "6947",
+    "teamname": "GRV"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e25537e"},
+    "teamid": "6655",
+    "teamname": "XL"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e255380"},
+    "teamid": "1365",
+    "teamname": "VIT"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e255382"},
+    "teamid": "32",
+    "teamname": "SK"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e255383"},
+    "teamid": "61",
+    "teamname": "AST"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e255384"},
+    "teamid": "4286",
+    "teamname": "MSF"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e255388"},
+    "teamid": "6637",
+    "teamname": "NS"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e25538b"},
+    "teamid": "193",
+    "teamname": "HLE"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e25538d"},
+    "teamid": "7245",
+    "teamname": "BRO"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e25538e"},
+    "teamid": "5149",
+    "teamname": "FOX"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e25538f"},
+    "teamid": "1543",
+    "teamname": "KDF"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2553d2"},
+    "teamid": "48",
+    "teamname": "UOL"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2553d4"},
+    "teamid": "4520",
+    "teamname": "INF"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2553d5"},
+    "teamid": "67",
+    "teamname": "RYL"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2553d6"},
+    "teamid": "4700",
+    "teamname": "EDGY"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2553d7"},
+    "teamid": "7354",
+    "teamname": "BMX"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2553d8"},
+    "teamid": "6720",
+    "teamname": "SDX"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2553d9"},
+    "teamid": "4277",
+    "teamname": "JDM"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2553db"},
+    "teamid": "7001",
+    "teamname": "UPA"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2553dd"},
+    "teamid": "6716",
+    "teamname": "RAP"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2553de"},
+    "teamid": "216",
+    "teamname": "MCX"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2553df"},
+    "teamid": "7000",
+    "teamname": "TO"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2553e0"},
+    "teamid": "2864",
+    "teamname": "JT"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2553e1"},
+    "teamid": "6923",
+    "teamname": "SPG"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2553e2"},
+    "teamid": "7332",
+    "teamname": "BME"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2553e3"},
+    "teamid": "7353",
+    "teamname": "DYD"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2553e4"},
+    "teamid": "213",
+    "teamname": "HKA"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2553e6"},
+    "teamid": "235",
+    "teamname": "LYB"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2553e7"},
+    "teamid": "6721",
+    "teamname": "TP"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2553e8"},
+    "teamid": "6938",
+    "teamname": "BJD"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2553e9"},
+    "teamid": "6718",
+    "teamname": "JJH"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2553ea"},
+    "teamid": "7333",
+    "teamname": "IMP"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2553eb"},
+    "teamid": "5449",
+    "teamname": "TESC"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2553ec"},
+    "teamid": "6657",
+    "teamname": "DWT"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2553ed"},
+    "teamid": "199",
+    "teamname": "WEA"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2553ee"},
+    "teamid": "7352",
+    "teamname": "BTM"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2553ef"},
+    "teamid": "6979",
+    "teamname": "CC"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2553f1"},
+    "teamid": "7069",
+    "teamname": "OBG"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2553f2"},
+    "teamid": "7350",
+    "teamname": "BSG"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2553f3"},
+    "teamid": "6980",
+    "teamname": "DA"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2553f4"},
+    "teamid": "4433",
+    "teamname": "RoX"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2553f5"},
+    "teamid": "4157",
+    "teamname": "VEG"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2553f6"},
+    "teamid": "7330",
+    "teamname": "CPT"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2553f9"},
+    "teamid": "4535",
+    "teamname": "KLG"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2553fa"},
+    "teamid": "4523",
+    "teamname": "XTN"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2553fc"},
+    "teamid": "4530",
+    "teamname": "FG"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e2553fe"},
+    "teamid": "6975",
+    "teamname": "AK"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e25540a"},
+    "teamid": "4542",
+    "teamname": "LGC"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e25540d"},
+    "teamid": "5433",
+    "teamname": "WBGY"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e255415"},
+    "teamid": "5434",
+    "teamname": "LGDY"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e255416"},
+    "teamid": "2502",
+    "teamname": "YM"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e255419"},
+    "teamid": "5438",
+    "teamname": "ALY"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e25541a"},
+    "teamid": "6714",
+    "teamname": "LNGA"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e25541c"},
+    "teamid": "6715",
+    "teamname": "BLGJ"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e25541d"},
+    "teamid": "6717",
+    "teamname": "TTY"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e25541e"},
+    "teamid": "6713",
+    "teamname": "FPB"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e25541f"},
+    "teamid": "6712",
+    "teamname": "IGY"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e255420"},
+    "teamid": "980",
+    "teamname": "OMD"
+  },
+  {
+    "_id": {"$oid": "664f70c23742fc3d4e25542b"},
+    "teamid": "59",
+    "teamname": "S04"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e255450"},
+    "teamid": "6830",
+    "teamname": "FLA"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e255451"},
+    "teamid": "4401",
+    "teamname": "KBM"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e255453"},
+    "teamid": "7323",
+    "teamname": "RNS"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e255454"},
+    "teamid": "7322",
+    "teamname": "LBR"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e255455"},
+    "teamid": "1035",
+    "teamname": "PNG"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e255457"},
+    "teamid": "6949",
+    "teamname": "FUR"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e255458"},
+    "teamid": "7321",
+    "teamname": "NMG"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e255459"},
+    "teamid": "3924",
+    "teamname": "ITZ"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e25545f"},
+    "teamid": "4577",
+    "teamname": "GAL"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e25547a"},
+    "teamid": "33",
+    "teamname": "GMB"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e2554af"},
+    "teamid": "6941",
+    "teamname": "CES"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e2554b3"},
+    "teamid": "6831",
+    "teamname": "TS"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e2554b5"},
+    "teamid": "7068",
+    "teamname": "SKY"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e2554b7"},
+    "teamid": "7324",
+    "teamname": "SE"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e2554b9"},
+    "teamid": "6943",
+    "teamname": "TF"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e2554e8"},
+    "teamid": "5432",
+    "teamname": "TSG"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e2554ef"},
+    "teamid": "7318",
+    "teamname": "12"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e25551d"},
+    "teamid": "7304",
+    "teamname": "DYU"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e25551f"},
+    "teamid": "7306",
+    "teamname": "LYA"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e255553"},
+    "teamid": "6981",
+    "teamname": "EPG"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e25555b"},
+    "teamid": "6976",
+    "teamname": "PIX"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e25555d"},
+    "teamid": "6974",
+    "teamname": "AZU"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e255561"},
+    "teamid": "70",
+    "teamname": "AHQ"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e255564"},
+    "teamid": "6936",
+    "teamname": "NOV"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e255567"},
+    "teamid": "6937",
+    "teamname": "RSG"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e25556a"},
+    "teamid": "5505",
+    "teamname": "EVS"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e25556f"},
+    "teamid": "6944",
+    "teamname": "OPG"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e255592"},
+    "teamid": "5143",
+    "teamname": "SP"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e255597"},
+    "teamid": "6950",
+    "teamname": "PRG"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e25559a"},
+    "teamid": "7067",
+    "teamname": "SAN"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e25559d"},
+    "teamid": "4399",
+    "teamname": "VK"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e2555a7"},
+    "teamid": "6832",
+    "teamname": "RY"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e2555ad"},
+    "teamid": "4539",
+    "teamname": "AV"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e2555ba"},
+    "teamid": "6999",
+    "teamname": "AC"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e2555c6"},
+    "teamid": "5153",
+    "teamname": "GRF"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e2555c7"},
+    "teamid": "6924",
+    "teamname": "SRB"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e2555ff"},
+    "teamid": "3925",
+    "teamname": "M19"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e25563e"},
+    "teamid": "6942",
+    "teamname": "FTV"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e255646"},
+    "teamid": "6948",
+    "teamname": "RDP"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e25565b"},
+    "teamid": "6875",
+    "teamname": "传奇蓝队"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e25565c"},
+    "teamid": "6854",
+    "teamname": "Tian队"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e25565d"},
+    "teamid": "6855",
+    "teamname": "MLXG队"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e25565e"},
+    "teamid": "6874",
+    "teamname": "传奇红队"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e255669"},
+    "teamid": "6929",
+    "teamname": "RH"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e25566b"},
+    "teamid": "6636",
+    "teamname": "BRB"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e255673"},
+    "teamid": "6922",
+    "teamname": "ASR"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e255679"},
+    "teamid": "6926",
+    "teamname": "KUS"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e25567d"},
+    "teamid": "190",
+    "teamname": "JAG"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e255684"},
+    "teamid": "4049",
+    "teamname": "KCN"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e255686"},
+    "teamid": "6634",
+    "teamname": "GCB"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e255695"},
+    "teamid": "6719",
+    "teamname": "LGE"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e2556aa"},
+    "teamid": "5307",
+    "teamname": "CG"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e2556b5"},
+    "teamid": "6755",
+    "teamname": "MG"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e2556be"},
+    "teamid": "4719",
+    "teamname": "GRX"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e2556c0"},
+    "teamid": "214",
+    "teamname": "FW"
+  },
+  {
+    "_id": {"$oid": "664f70c33742fc3d4e2556c2"},
+    "teamid": "5406",
+    "teamname": "MAD Team"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e2556fc"},
+    "teamid": "5309",
+    "teamname": "OPT"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e2556fd"},
+    "teamid": "1458",
+    "teamname": "FOX"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e255711"},
+    "teamid": "5448",
+    "teamname": "VTG"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e25572f"},
+    "teamid": "6758",
+    "teamname": "BMR"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e255735"},
+    "teamid": "6644",
+    "teamname": "VSG"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e255760"},
+    "teamid": "6658",
+    "teamname": "DG"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e25576e"},
+    "teamid": "5441",
+    "teamname": "SG"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e255775"},
+    "teamid": "5435",
+    "teamname": "Unlimited Potential"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e255798"},
+    "teamid": "1041",
+    "teamname": "BBQ"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e25579a"},
+    "teamid": "6635",
+    "teamname": "Seoul"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e2557a0"},
+    "teamid": "6642",
+    "teamname": "WNS"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e2557a3"},
+    "teamid": "6633",
+    "teamname": "RGA"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e2557a5"},
+    "teamid": "2615",
+    "teamname": "MVP"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e2557c8"},
+    "teamid": "4628",
+    "teamname": "ASC"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e2557e7"},
+    "teamid": "6251",
+    "teamname": "韩国"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e2557e8"},
+    "teamid": "6253",
+    "teamname": "中国台北"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e2557e9"},
+    "teamid": "6249",
+    "teamname": "中国"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e2557ea"},
+    "teamid": "6252",
+    "teamname": "中国香港"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e2557eb"},
+    "teamid": "6254",
+    "teamname": "中国澳门"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e2557ec"},
+    "teamid": "6255",
+    "teamname": "日本"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e2557ff"},
+    "teamid": "5407",
+    "teamname": "AFR"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e255811"},
+    "teamid": "45",
+    "teamname": "ROC"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e255813"},
+    "teamid": "36",
+    "teamname": "GIA"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e255814"},
+    "teamid": "46",
+    "teamname": "H2K"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e25581c"},
+    "teamid": "5442",
+    "teamname": "SHEINOO"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e255824"},
+    "teamid": "4703",
+    "teamname": "PRW"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e255826"},
+    "teamid": "4275",
+    "teamname": "Tyloo"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e255828"},
+    "teamid": "6228",
+    "teamname": "WD"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e25582b"},
+    "teamid": "5447",
+    "teamname": "OnlyGame"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e25582c"},
+    "teamid": "5443",
+    "teamname": "VSGaming"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e25582d"},
+    "teamid": "984",
+    "teamname": "GT"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e25582e"},
+    "teamid": "5450",
+    "teamname": "SC"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e255830"},
+    "teamid": "4702",
+    "teamname": "MSC"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e255832"},
+    "teamid": "6223",
+    "teamname": "VRG"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e255843"},
+    "teamid": "4593",
+    "teamname": "EEW"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e255844"},
+    "teamid": "71",
+    "teamname": "KDM"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e255854"},
+    "teamid": "4368",
+    "teamname": "PGM"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e25587e"},
+    "teamid": "4202",
+    "teamname": "ME"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e2558c1"},
+    "teamid": "1101",
+    "teamname": "LMS"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e2558c2"},
+    "teamid": "1104",
+    "teamname": "LPL"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e2558c3"},
+    "teamid": "1098",
+    "teamname": "LEC"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e2558c4"},
+    "teamid": "1103",
+    "teamname": "LCS"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e2558c5"},
+    "teamid": "1100",
+    "teamname": "LCK"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e2558c6"},
+    "teamid": "5175",
+    "teamname": "GPL"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e2558c7"},
+    "teamid": "5174",
+    "teamname": "土耳其"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e2558c8"},
+    "teamid": "5173",
+    "teamname": "巴西"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e2558d6"},
+    "teamid": "184",
+    "teamname": "CJE"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e2558e7"},
+    "teamid": "4958",
+    "teamname": "YG(VN)"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e2558e9"},
+    "teamid": "4959",
+    "teamname": "ONE"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e2558f9"},
+    "teamid": "6685",
+    "teamname": "YG"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e2558fd"},
+    "teamid": "35",
+    "teamname": "NIP"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e2558ff"},
+    "teamid": "4271",
+    "teamname": "DAN"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e25590b"},
+    "teamid": "4720",
+    "teamname": "MM"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e25590c"},
+    "teamid": "4701",
+    "teamname": "TH"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e25590e"},
+    "teamid": "207",
+    "teamname": "NB"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e25590f"},
+    "teamid": "2741",
+    "teamname": "IM"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e255913"},
+    "teamid": "2958",
+    "teamname": "LD"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e255914"},
+    "teamid": "29",
+    "teamname": "P1"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e255935"},
+    "teamid": "2743",
+    "teamname": "NV"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e255937"},
+    "teamid": "4297",
+    "teamname": "Spider"
+  },
+  {
+    "_id": {"$oid": "664f70c43742fc3d4e25593c"},
+    "teamid": "2865",
+    "teamname": "FB"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255973"},
+    "teamid": "4704",
+    "teamname": "RT"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255976"},
+    "teamid": "4705",
+    "teamname": "FFFD"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255980"},
+    "teamid": "4630",
+    "teamname": "KLH"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255985"},
+    "teamid": "4629",
+    "teamname": "FTS"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255988"},
+    "teamid": "4632",
+    "teamname": "TR"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255991"},
+    "teamid": "4430",
+    "teamname": "VP"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e2559a4"},
+    "teamid": "1586",
+    "teamname": "XG"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e2559a8"},
+    "teamid": "4576",
+    "teamname": "CEC"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e2559b1"},
+    "teamid": "4394",
+    "teamname": "CNB"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e2559b5"},
+    "teamid": "4533",
+    "teamname": "Last Kings"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e2559b8"},
+    "teamid": "4534",
+    "teamname": "RBT"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e2559ba"},
+    "teamid": "4400",
+    "teamname": "OPK"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e2559bb"},
+    "teamid": "4531",
+    "teamname": "HAF"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e2559bc"},
+    "teamid": "4543",
+    "teamname": "SIN"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e2559bd"},
+    "teamid": "4402",
+    "teamname": "REM"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e2559c1"},
+    "teamid": "4544",
+    "teamname": "TM"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e2559c4"},
+    "teamid": "4538",
+    "teamname": "AE"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e2559c6"},
+    "teamid": "4541",
+    "teamname": "X5"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e2559e5"},
+    "teamid": "4047",
+    "teamname": "RisingStar Gaming"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e2559f6"},
+    "teamid": "4521",
+    "teamname": "JTH"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e2559f8"},
+    "teamid": "4518",
+    "teamname": "Gaming Gaming"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e2559f9"},
+    "teamid": "4524",
+    "teamname": "ZTG"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e2559fa"},
+    "teamid": "4517",
+    "teamname": "D9"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e2559fb"},
+    "teamid": "4519",
+    "teamname": "IFG"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255a0b"},
+    "teamid": "4050",
+    "teamname": "KSL"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255a21"},
+    "teamid": "212",
+    "teamname": "MSE"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255a31"},
+    "teamid": "982",
+    "teamname": "TBG"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255a34"},
+    "teamid": "975",
+    "teamname": "SAT"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255a79"},
+    "teamid": "1457",
+    "teamname": "REN"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255a85"},
+    "teamid": "62",
+    "teamname": "TPA"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255a8b"},
+    "teamid": "1587",
+    "teamname": "CGE"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255a98"},
+    "teamid": "977",
+    "teamname": "2144D"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255aa7"},
+    "teamid": "196",
+    "teamname": "SBE"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255aae"},
+    "teamid": "203",
+    "teamname": "M3"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255ab5"},
+    "teamid": "206",
+    "teamname": "UP"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255ac5"},
+    "teamid": "1082",
+    "teamname": "CTU"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255ac6"},
+    "teamid": "268",
+    "teamname": "Anarchy"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255ac8"},
+    "teamid": "1084",
+    "teamname": "Winners"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255acb"},
+    "teamid": "189",
+    "teamname": "IMiracle"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255ace"},
+    "teamid": "1083",
+    "teamname": "YB"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255acf"},
+    "teamid": "16",
+    "teamname": "T8"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255ad0"},
+    "teamid": "7",
+    "teamname": "CST"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255ad1"},
+    "teamid": "124",
+    "teamname": "IMG"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255ad2"},
+    "teamid": "19",
+    "teamname": "NME"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255ad9"},
+    "teamid": "38",
+    "teamname": "MS"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255aea"},
+    "teamid": "1032",
+    "teamname": "BKT"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255af1"},
+    "teamid": "27",
+    "teamname": "GV"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255afb"},
+    "teamid": "1034",
+    "teamname": "HR"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255afd"},
+    "teamid": "1036",
+    "teamname": "KLG"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255b03"},
+    "teamid": "1080",
+    "teamname": "Oz RPG"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255b0c"},
+    "teamid": "31",
+    "teamname": "TDK"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255b17"},
+    "teamid": "43",
+    "teamname": "CW"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255b22"},
+    "teamid": "215",
+    "teamname": "AS"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255b24"},
+    "teamid": "210",
+    "teamname": "LGS"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255b2b"},
+    "teamid": "973",
+    "teamname": "WE.F"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255b2e"},
+    "teamid": "202",
+    "teamname": "KNG"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255b30"},
+    "teamid": "205",
+    "teamname": "KX"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255b32"},
+    "teamid": "273",
+    "teamname": "AD Gaming"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255b44"},
+    "teamid": "974",
+    "teamname": "Newbee"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255b48"},
+    "teamid": "267",
+    "teamname": "Xenics Storm"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255b49"},
+    "teamid": "195",
+    "teamname": "WIN"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255b5c"},
+    "teamid": "28",
+    "teamname": "WFX"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255b5d"},
+    "teamid": "20",
+    "teamname": "FSN"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255b60"},
+    "teamid": "50",
+    "teamname": "Reason Gaming"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255b61"},
+    "teamid": "60",
+    "teamname": "CWA"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255b63"},
+    "teamid": "201",
+    "teamname": "Gamtee"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255b64"},
+    "teamid": "270",
+    "teamname": "EP"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255b7d"},
+    "teamid": "44",
+    "teamname": "MYM"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255b85"},
+    "teamid": "211",
+    "teamname": "NGU"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255b87"},
+    "teamid": "209",
+    "teamname": "DOR"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255b9b"},
+    "teamid": "51",
+    "teamname": "G2d"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255b9c"},
+    "teamid": "49",
+    "teamname": "SKP"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255b9d"},
+    "teamid": "57",
+    "teamname": "DD"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255b9e"},
+    "teamid": "54",
+    "teamname": "MC"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255ba1"},
+    "teamid": "53",
+    "teamname": "NF"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255ba2"},
+    "teamid": "15",
+    "teamname": "CA"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255ba5"},
+    "teamid": "55",
+    "teamname": "ASC"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255ba6"},
+    "teamid": "5",
+    "teamname": "COW"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255ba7"},
+    "teamid": "40",
+    "teamname": "MIL"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255ba9"},
+    "teamid": "56",
+    "teamname": "SPA"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255baa"},
+    "teamid": "18",
+    "teamname": "ZEN"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255bab"},
+    "teamid": "52",
+    "teamname": "TE"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255bac"},
+    "teamid": "17",
+    "teamname": "PRO"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255bad"},
+    "teamid": "232",
+    "teamname": "CF"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255bae"},
+    "teamid": "21",
+    "teamname": "F5"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255baf"},
+    "teamid": "58",
+    "teamname": "Strix"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255bb0"},
+    "teamid": "23",
+    "teamname": "FSE"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255bb1"},
+    "teamid": "12",
+    "teamname": "CLB"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255bb2"},
+    "teamid": "22",
+    "teamname": "OO"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255bb3"},
+    "teamid": "25",
+    "teamname": "NT"
+  },
+  {
+    "_id": {"$oid": "664f70c53742fc3d4e255bb4"},
+    "teamid": "26",
+    "teamname": "CG"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255bbb"},
+    "teamid": "65",
+    "teamname": "SSW"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255bbc"},
+    "teamid": "37",
+    "teamname": "ALL"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255bc0"},
+    "teamid": "72",
+    "teamname": "SSB"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255bc5"},
+    "teamid": "14",
+    "teamname": "LMQ"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255bc9"},
+    "teamid": "73",
+    "teamname": ""
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255bd2"},
+    "teamid": "183",
+    "teamname": "KTA"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255bd3"},
+    "teamid": "66",
+    "teamname": "NBS"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255bd4"},
+    "teamid": "182",
+    "teamname": "SKS"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255bd6"},
+    "teamid": "188",
+    "teamname": "CJB"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255bd7"},
+    "teamid": "186",
+    "teamname": "JAF"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255bde"},
+    "teamid": "185",
+    "teamname": "IM1"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255bdf"},
+    "teamid": "191",
+    "teamname": "MKZ"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255be0"},
+    "teamid": "192",
+    "teamname": "BFM"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255be7"},
+    "teamid": "4",
+    "teamname": "CRS"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255bf5"},
+    "teamid": "11",
+    "teamname": "C9T"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255bf6"},
+    "teamid": "6",
+    "teamname": "XDG"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255c03"},
+    "teamid": "47",
+    "teamname": "DNE"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255c0c"},
+    "teamid": "269",
+    "teamname": "Positive Energy"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255c11"},
+    "teamid": "10",
+    "teamname": "COG"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255c2a"},
+    "teamid": "39",
+    "teamname": "Lemondogs"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255c2e"},
+    "teamid": "4143",
+    "teamname": "Team ALTERNATE"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255c32"},
+    "teamid": "1738",
+    "teamname": "PE"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255c35"},
+    "teamid": "1739",
+    "teamname": "LMQTC"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255c3e"},
+    "teamid": "222",
+    "teamname": "Velocity Esports"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255c4a"},
+    "teamid": "221",
+    "teamname": "The Salad Bar"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255c4b"},
+    "teamid": "223",
+    "teamname": "Team Summon"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255c4d"},
+    "teamid": "8",
+    "teamname": "Team MRN"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255c4e"},
+    "teamid": "220",
+    "teamname": "Azure Cats"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255c4f"},
+    "teamid": "219",
+    "teamname": "Fidelis"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255c50"},
+    "teamid": "224",
+    "teamname": "DoubleBuff"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255c52"},
+    "teamid": "218",
+    "teamname": "Team Astral Poke"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255c55"},
+    "teamid": "227",
+    "teamname": "Samurai in Jeans"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255c56"},
+    "teamid": "229",
+    "teamname": "Dexterisactuallyevil"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255c5a"},
+    "teamid": "230",
+    "teamname": "TCM Gaming"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255c5b"},
+    "teamid": "231",
+    "teamname": "Wizards Club"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255c5c"},
+    "teamid": "226",
+    "teamname": "Dragonborns"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255c5d"},
+    "teamid": "225",
+    "teamname": "Against All Authority"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255c5e"},
+    "teamid": "228",
+    "teamname": "Anexis eSports"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255c71"},
+    "teamid": "1389",
+    "teamname": "WOA"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255c73"},
+    "teamid": "1390",
+    "teamname": "LM"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255c75"},
+    "teamid": "1391",
+    "teamname": "Wayi"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255c79"},
+    "teamid": "3907",
+    "teamname": "M5"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255c7b"},
+    "teamid": "3909",
+    "teamname": "AZF"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255c7d"},
+    "teamid": "3910",
+    "teamname": "SAJ"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255c7e"},
+    "teamid": "3906",
+    "teamname": "CLG.EU"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255c85"},
+    "teamid": "3902",
+    "teamname": "Epik"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255c86"},
+    "teamid": "3901",
+    "teamname": "aAa"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255c88"},
+    "teamid": "3904",
+    "teamname": "Xan"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255c89"},
+    "teamid": "3903",
+    "teamname": "GDE"
+  },
+  {
+    "_id": {"$oid": "664f70c63742fc3d4e255c8a"},
+    "teamid": "3905",
+    "teamname": "PCFC"
+  }
+]

@@ -1,0 +1,117 @@
+[
+  {
+    "_id": {"$oid": "664f14adeb50b5f439531c54"},
+    "season_id": "206",
+    "season_name": "2024职业联赛"
+  },
+  {
+    "_id": {"$oid": "664f14adeb50b5f439531c55"},
+    "season_id": "190",
+    "season_name": "2023职业联赛"
+  },
+  {
+    "_id": {"$oid": "664f14adeb50b5f439531c56"},
+    "season_id": "167",
+    "season_name": "2022职业联赛"
+  },
+  {
+    "_id": {"$oid": "664f14adeb50b5f439531c57"},
+    "season_id": "148",
+    "season_name": "2021职业联赛"
+  },
+  {
+    "_id": {"$oid": "664f14adeb50b5f439531c58"},
+    "season_id": "134",
+    "season_name": "2020职业联赛"
+  },
+  {
+    "_id": {"$oid": "664f14adeb50b5f439531c59"},
+    "season_id": "115",
+    "season_name": "2019职业联赛"
+  },
+  {
+    "_id": {"$oid": "664f14adeb50b5f439531c5a"},
+    "season_id": "201",
+    "season_name": "2023全球总决赛"
+  },
+  {
+    "_id": {"$oid": "664f14adeb50b5f439531c5b"},
+    "season_id": "184",
+    "season_name": "2022全球总决赛"
+  },
+  {
+    "_id": {"$oid": "664f14adeb50b5f439531c5c"},
+    "season_id": "156",
+    "season_name": "2021全球总决赛"
+  },
+  {
+    "_id": {"$oid": "664f14adeb50b5f439531c5d"},
+    "season_id": "143",
+    "season_name": "2020全球总决赛"
+  },
+  {
+    "_id": {"$oid": "664f14adeb50b5f439531c5e"},
+    "season_id": "128",
+    "season_name": "2019全球总决赛"
+  },
+  {
+    "_id": {"$oid": "664f14adeb50b5f439531c5f"},
+    "season_id": "110",
+    "season_name": "2018全球总决赛"
+  },
+  {
+    "_id": {"$oid": "664f14adeb50b5f439531c60"},
+    "season_id": "208",
+    "season_name": "2024季中冠军赛"
+  },
+  {
+    "_id": {"$oid": "664f14adeb50b5f439531c61"},
+    "season_id": "194",
+    "season_name": "2023季中冠军赛"
+  },
+  {
+    "_id": {"$oid": "664f14adeb50b5f439531c62"},
+    "season_id": "175",
+    "season_name": "2022季中冠军赛"
+  },
+  {
+    "_id": {"$oid": "664f14adeb50b5f439531c63"},
+    "season_id": "152",
+    "season_name": "2021季中冠军赛"
+  },
+  {
+    "_id": {"$oid": "664f14adeb50b5f439531c64"},
+    "season_id": "120",
+    "season_name": "2019季中冠军赛"
+  },
+  {
+    "_id": {"$oid": "664f14adeb50b5f439531c65"},
+    "season_id": "204",
+    "season_name": "2023德玛西亚杯"
+  },
+  {
+    "_id": {"$oid": "664f14adeb50b5f439531c66"},
+    "season_id": "189",
+    "season_name": "2022德玛西亚杯"
+  },
+  {
+    "_id": {"$oid": "664f14adeb50b5f439531c67"},
+    "season_id": "132",
+    "season_name": "2018德玛西亚杯"
+  },
+  {
+    "_id": {"$oid": "664f14adeb50b5f439531c68"},
+    "season_id": "192",
+    "season_name": "2023发展联赛"
+  },
+  {
+    "_id": {"$oid": "664f14adeb50b5f439531c69"},
+    "season_id": "187",
+    "season_name": "2022解说主持杯"
+  },
+  {
+    "_id": {"$oid": "664f14adeb50b5f439531c6a"},
+    "season_id": "198",
+    "season_name": "2023亚洲挑战者之星邀请赛"
+  }
+]
