@@ -1,3 +1,12 @@
+# -*- coding:utf-8 -*-
+# @Project        :LPL
+# @FileName       :env.py
+# @Time           :2025/3/5 04:13
+# @Software       :PyCharm
+# @Author         :Viper373
+# @Index          :https://viper3.top
+# @Blog           :https://blog.viper3.top
+
 from fake_useragent import UserAgent
 
 # 请求头配置
