@@ -7,9 +7,28 @@
 # @Index          :https://viper3.top
 # @Blog           :https://blog.viper3.top
 
+import os
 import json
-import logging
+import logging  # 日志
+from rich.logging import RichHandler
+# 获取当前脚本的目录
+script_dir = os.path.dirname(os.path.abspath(__file__))
+# 获取项目的根目录（假设你的项目根目录在上两级）
+project_root = os.path.abspath(os.path.join(script_dir, os.pardir))
 
+logging.basicConfig(
+    level="INFO",
+    format="%(asctime)s - [%(levelname)s] - %(message)s",
+    datefmt="[%Y-%m-%d %H:%M:%S]",
+    handlers=[
+        # 日志控制台处理器
+        RichHandler(rich_tracebacks=True),
+        # 日志文件处理器
+        logging.FileHandler(os.path.join(project_root, 'logs', 'lol.logs'), mode='a', encoding='utf-8'),
+    ],
+)
+
+log = logging.getLogger("rich")  # 日志对象
 # 读取hero_list.json文件
 with open('../data/json/hero_list.json', 'r', encoding='utf-8') as f:
     hero_list = json.load(f)
@@ -31,4 +50,4 @@ for hero in hero_list.get('hero'):
 with open('../data/json/hero_info.json', 'w', encoding='utf-8') as f:
     json.dump(hero_list, f, ensure_ascii=False, indent=4)
 
-logging.info(f"hero_info.json 合并完成 丨 {hero_list.get('version')} 丨 {hero_list.get('fileTime')}")
+log.info(f"hero_info.json 合并完成 丨 {hero_list.get('version')} 丨 {hero_list.get('fileTime')}")
