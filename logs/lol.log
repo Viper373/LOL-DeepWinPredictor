@@ -572,3 +572,36 @@
 [2024-05-25 20:04:47] - [INFO] - 新增克制关系完成丨共计[31951]moba_lol_data
 [2024-05-25 20:16:50] - [INFO] - 新增克制关系完成丨共计[31951]moba_lol_data
 [2024-05-25 20:19:09] - [INFO] - 新增克制关系完成丨共计[31951]moba_lol_data
+[2025-03-05 04:03:30] - [INFO] - 英雄Logo信息更新成功
+[2025-03-05 04:04:51] - [INFO] - 英雄Logo信息更新成功
+[2025-03-05 04:13:45] - [INFO] - 已保存 hero_logo.json
+[2025-03-05 04:14:41] - [INFO] - 15.4hero_list.js保存完成丨2025-02-26 11:17:30
+[2025-03-05 04:14:41] - [INFO] - 已保存 hero_logo.json
+[2025-03-05 04:15:58] - [INFO] - version：15.4 hero_list.js保存完成丨2025-02-26 11:17:30
+[2025-03-05 04:15:59] - [INFO] - 已保存 hero_logo.json
+[2025-03-05 04:17:09] - [INFO] - hero_list.js保存完成丨version：15.4丨2025-02-26 11:17:30
+[2025-03-05 04:17:09] - [INFO] - 已保存 hero_logo.json
+[2025-03-05 04:17:24] - [INFO] - hero_list.js保存完成 丨 version：15.4 丨 2025-02-26 11:17:30
+[2025-03-05 04:17:24] - [INFO] - 已保存 hero_logo.json
+[2025-03-05 04:17:57] - [INFO] - hero_list.js保存完成 丨 version：15.4 丨 2025-02-26 11:17:30
+[2025-03-05 04:17:58] - [INFO] - 已保存 hero_logo.json
+[2025-03-05 04:24:16] - [INFO] - hero_list.js保存完成 丨 version：15.4 丨 2025-02-26 11:17:30
+[2025-03-05 04:24:17] - [INFO] - 已保存 hero_logo.json
+[2025-03-05 04:27:22] - [INFO] - hero_list.js保存完成 丨 version：15.4 丨 2025-02-26 11:17:30
+[2025-03-05 04:28:44] - [INFO] - hero_list.js保存完成 丨 version：15.4 丨 2025-02-26 11:17:30
+[2025-03-05 04:28:55] - [INFO] - 已保存 hero_logo.json
+[2025-03-05 04:29:15] - [INFO] - hero_list.js保存完成 丨 version：15.4 丨 2025-02-26 11:17:30
+[2025-03-05 04:29:15] - [INFO] - 已保存 hero_logo.json
+[2025-03-05 04:29:19] - [INFO] - hero_list.js保存完成 丨 version：15.4 丨 2025-02-26 11:17:30
+[2025-03-05 04:34:56] - [INFO] - 已保存 hero_logo.json
+[2025-03-05 04:34:56] - [INFO] - 成功提取 0 条英雄数据
+[2025-03-05 04:41:03] - [INFO] - 已保存 hero_logo.json
+[2025-03-05 04:41:03] - [INFO] - 成功提取 0 条英雄数据
+[2025-03-05 04:48:15] - [ERROR] - 处理英雄异常: string indices must be integers | 数据: hero
+[2025-03-05 04:48:15] - [ERROR] - 处理英雄异常: string indices must be integers | 数据: version
+[2025-03-05 04:48:15] - [ERROR] - 处理英雄异常: string indices must be integers | 数据: fileName
+[2025-03-05 04:48:15] - [ERROR] - 处理英雄异常: string indices must be integers | 数据: fileTime
+[2025-03-05 04:48:15] - [INFO] - 成功生成 0/4 条Logo数据
+[2025-03-05 04:48:28] - [INFO] - 成功生成 170/4 条Logo数据
+[2025-03-05 04:49:39] - [INFO] - 成功生成 170 条Logo数据
+[2025-03-05 05:10:37] - [INFO] - 成功生成 170 条Logo数据
