@@ -1,3 +1,12 @@
+# -*- coding:utf-8 -*-
+# @Project        :LPL
+# @FileName       :process_data.py
+# @Time           :2025/3/5 04:13
+# @Software       :PyCharm
+# @Author         :Viper373
+# @Index          :https://viper3.top
+# @Blog           :https://blog.viper3.top
+
 import os
 import sys
 import csv
@@ -41,7 +50,7 @@ logging.basicConfig(
         # 日志控制台处理器
         RichHandler(rich_tracebacks=True),
         # 日志文件处理器
-        logging.FileHandler(os.path.join(project_root, 'log', 'lol.log'), mode='a', encoding='utf-8'),
+        logging.FileHandler(os.path.join(project_root, 'logs', 'lol.logs'), mode='a', encoding='utf-8'),
     ],
 )
 log = logging.getLogger("rich")  # 日志对象
