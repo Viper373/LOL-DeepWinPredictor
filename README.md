@@ -1,15 +1,48 @@
 
 # 🎮 基于深度学习的英雄联盟胜率预测
 
+[![Python](https://img.shields.io/badge/Python-3.10.7+-blue.svg)](https://www.python.org/) [![PyTorch](https://img.shields.io/badge/PyTorch-2.3.0-red.svg)](https://pytorch.org/) [![Flask](https://img.shields.io/badge/Flask-3.0.3-green.svg)](https://flask.palletsprojects.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Vercel部署状态](https://therealsujitk-vercel-badge.vercel.app/?app=lol-deepwinpredictor&style=flat)](https://lol.viper3.top/predict)
+
 ## 📚 项目简介
+
+### 🎓 学术背景
 - 🌴项目为本人毕业设计
 - 🌱论文题目为《基于深度学习的英雄联盟胜率预测研究》
 - 🌲毕业院校：北京石油化工学院（BIPT） 
 - 🌳院系：经济管理学院 
 - 🌾专业：大数据管理与应用 
 - 🌿年级：20级
-- 🌵本项目旨在使用双向LSTM（BiLSTM_Att）结合注意力机制预测英雄联盟比赛的胜率。数据来自LPL赛事和玩加电竞，共计约32900条比赛记录。四大二分类指标均达到95%左右。
-模型基于Pytorch构建，依据双方阵容选择来预测比赛胜率，通过注意力机制来提取关键信息，提高模型的准确性。
+
+### 🔍 项目概述
+本项目旨在通过深度学习技术预测英雄联盟（LOL）比赛的胜率，为玩家、教练和分析师提供数据支持。通过分析双方阵容选择，结合英雄特性和历史数据，模型能够给出较为准确的胜率预测。
+
+### 💡 核心特点
+- 🌵**创新模型架构**：采用双向LSTM（BiLSTM_Att）结合注意力机制，能够有效捕捉英雄间的协同与克制关系
+- 📊**大规模数据集**：数据来自LPL赛事和玩加电竞，共计约32900条比赛记录，覆盖多个赛季的职业比赛
+- 🎯**高精度预测**：四大二分类指标（准确率、精确率、召回率、F1分数）均达到95%左右
+- 🖥️**用户友好界面**：提供直观的Web界面，用户可以轻松输入阵容信息并获取预测结果
+- ☁️**云端部署**：支持Vercel一键部署，便于分享和使用
+
+### 🛠️ 技术栈
+
+#### 后端技术
+- **核心语言**：Python 3.10.7+
+- **深度学习框架**：PyTorch 2.3.0
+- **Web框架**：Flask 3.0.3
+- **消息队列**：RocketMQ（用于异步处理预测请求）
+- **数据库**：MongoDB（存储模型结果和用户数据）
+
+#### 前端技术
+- **基础技术**：HTML5, CSS3, JavaScript
+- **UI框架**：jQuery UI
+- **数据可视化**：ECharts
+- **搜索功能**：Fuse.js（用于英雄搜索）
+
+#### 部署环境
+- **云平台**：Vercel
+- **容器化**：支持Docker部署
+- **版本控制**：Git
 
 ## 🚙 在线体验
 - 🚀https://lol.viper3.top/predict
@@ -141,65 +174,84 @@ python app.py
 
 打开浏览器访问 `http://127.0.0.1:5000`，使用页面输入队伍信息并预测胜率。
 
-## 🔑 详细文件说明
+## 🔑 主要功能
 
-### `🍍BILSTM_Att.py`
+- **阵容分析**：分析双方阵容的优劣势，考虑英雄间的协同与克制关系
+- **胜率预测**：基于历史数据和深度学习模型，预测比赛胜率
+- **可视化展示**：直观展示预测结果和关键影响因素
+- **英雄搜索**：支持模糊搜索，快速找到所需英雄
+- **数据更新**：定期更新英雄数据和胜率统计
+- **异步处理**：使用消息队列处理大量预测请求
+- **响应式设计**：适配不同设备的屏幕尺寸
 
-实现了BiLSTM_Att模型和注意力机制，用于训练和预测。主要模块包括：
-- 🍐模型架构定义
-- 🍏前向传播
-- 🍎损失函数和优化器配置
-- 🥭引入注意力机制
+## 🚀 Vercel部署指南
 
-### `🍌env.py`
+可点击下方按钮立即部署：
 
-设置了项目所需的环境变量和配置。
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FViper373%2FLOL-DeepWinPredictor&env=MONGO_URL&project-name=lol-deepwinpredictor&repository-name=LOL-DeepWinPredictor)
 
-### `🍋predict.py`
+本项目已配置为可在Vercel上部署。按照以下步骤操作：
 
-加载训练好的模型，并对新数据进行预测。
+1. **准备工作**
+   - 确保你的项目已经推送到GitHub仓库
+   - 准备好MongoDB数据库（可使用MongoDB Atlas免费层）
 
-### `🍊test.py`
+2. **Vercel账户设置**
+   - 注册/登录[Vercel](https://vercel.com)
+   - 可以使用GitHub账户直接登录
 
-用于模型测试的脚本。
+3. **导入项目**
+   - 点击"New Project"
+   - 从GitHub导入你的仓库
+   - 选择包含本项目的仓库
 
-### `🍉train.py`
+4. **配置项目**
+   - 框架预设：选择"Other"（因为我们使用了自定义的vercel.json）
+   - 构建命令：不需要修改，使用vercel.json中的配置
+   - 输出目录：不需要修改，使用vercel.json中的配置
+   - 安装命令：`pip install -r requirements.txt`
 
-包含了训练模型的完整流程，包括数据加载、模型训练和评估。
+5. **环境变量设置**
+   - 在项目设置中找到"Environment Variables"
+   - 添加以下环境变量：
+     - `MONGO_URL`：你的MongoDB连接字符串
+     - 其他项目可能需要的环境变量
 
-### `🍈collecting_data.py`
+6. **部署**
+   - 点击"Deploy"按钮开始部署
+   - 等待部署完成
+   - 部署成功后，Vercel会提供一个默认域名（例如：your-project.vercel.app）
 
-通过爬虫或API收集数据。
+7. **自定义域名（可选）**
+   - 在项目设置中找到"Domains"
+   - 添加你的自定义域名
+   - 按照Vercel提供的说明配置DNS记录
 
-### `🍇concat_json.py`
+8. **持续部署**
+   - Vercel会自动监控你的GitHub仓库
+   - 每次推送到主分支时，Vercel会自动重新部署
 
-将多个JSON文件合并为一个，以便进行统一的预处理和分析。
+## 🍚 贡献指南
 
-### `🥥process_data.py`
+欢迎为本项目做出贡献！以下是参与方式：
 
-进行数据清洗和预处理，包括数据格式转换、归一化等操作。
+1. **提交问题**
+   - 使用GitHub Issues报告bug或提出新功能建议
+   - 清晰描述问题或建议，并提供相关信息
 
-### `🥝app.py`
+2. **提交代码**
+   - Fork本仓库
+   - 创建新分支：`git checkout -b feature/your-feature-name`
+   - 提交更改：`git commit -m 'Add some feature'`
+   - 推送到分支：`git push origin feature/your-feature-name`
+   - 提交Pull Request
 
-使用Flask框架构建的Web应用程序入口，提供前端接口和后台逻辑。
+3. **代码规范**
+   - 遵循PEP 8 Python编码规范
+   - 添加适当的注释和文档
+   - 确保代码通过现有测试
 
-### `🍰index.html`
-
-前端HTML页面，用于用户交互，选择队伍和英雄进行胜率预测。
-
-### `🍧beifen.js`
-
-前端JavaScript代码，实现页面的动态功能，包括自动补全、图表绘制和预测结果展示。
-
-### `🍜style.css`
-
-前端CSS样式表，定义了页面的布局和样式。
-
-## 🍚贡献
-
-欢迎提出问题、建议和贡献代码。请通过GitHub issue进行讨论和提交PR。
-
-## 🍖许可证
+## 🍖 许可证
 
 本项目采用MIT许可证，详情请参阅 LICENSE 文件。
 

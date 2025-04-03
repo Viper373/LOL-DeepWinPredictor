@@ -1,3 +1,12 @@
+# -*- coding:utf-8 -*-
+# @Project        :LPL
+# @FileName       :env.py
+# @Time           :2025/3/5 04:13
+# @Software       :PyCharm
+# @Author         :Viper373
+# @Index          :https://viper3.top
+# @Blog           :https://blog.viper3.top
+
 from fake_useragent import UserAgent
 
 # 请求头配置
@@ -13,8 +22,16 @@ PROXIES = {
 }
 
 # MongoDB配置
+# 从.env.local加载
+import os
+from dotenv import load_dotenv
+
+# 加载.env.local文件中的环境变量
+env_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), '.env.local')
+load_dotenv(env_path)
+
 # 主机
-MONGO_URL = "mongodb://127.0.0.1:27017"
+MONGO_URL = os.getenv('MONGO_URL')
 
 # LPL赛事
 SEASONS = {

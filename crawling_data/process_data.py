@@ -20,7 +20,7 @@ from rich.box import DOUBLE  # rich面板样式
 import logging  # 日志
 import pymongo
 from pymongo import MongoClient  # MongoDB
-import env  # 配置文件
+from BILSTM_Att import env
 
 # rich进度条样式配置
 page_columns = [

@@ -2,3 +2,4 @@ venv/
 .idea/
 data/json/wanplus/match_data.json
 logs/
+.env.local
