@@ -9,11 +9,16 @@
   ],
   "routes": [
     {
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
+    },
+    {
+      "src": "/(.*\\.(ico|png|jpg|jpeg|webp|svg|css|js|json))",
+      "dest": "/$1"
+    },
+    {
       "src": "/(.*)",
       "dest": "/app.py"
     }
-  ],
-  "env": {
-    "MONGO_URL": "@mongo_url"
-  }
+  ]
 }
