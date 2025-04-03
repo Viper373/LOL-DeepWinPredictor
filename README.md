@@ -45,7 +45,7 @@
 - **版本控制**：Git
 
 ## 🚙 在线体验
-- 🚀https://lol.viper3.top/predict
+- 🚀https://lol.viper3.top/
 
 ## 🛠 项目结构
 
@@ -215,10 +215,10 @@ python app.py
    - 在项目设置中找到"Environment Variables"
    - 添加以下环境变量：
 
-   | 变量名 | 描述 | 示例值 | 是否必填 |
-   | --- | --- | --- | --- |
-   | `MONGO_URL` | MongoDB数据库连接字符串 | mongodb+srv://username:password@cluster.mongodb.net/database?retryWrites=true&w=majority | ✅ |
-   | `API_KEY` | 外部API服务的访问密钥（如果使用） | sk_test_abcdefghijklmnopqrstuvwxyz | ❌ |
+   | 变量名         | 描述                 | 示例值                                                                                      | 是否必填 |
+   |-------------|--------------------|------------------------------------------------------------------------------------------|------|
+   | `MONGO_URL` | MongoDB数据库连接字符串    | mongodb+srv://username:password@cluster.mongodb.net/database?retryWrites=true&w=majority | ✅    |
+   | `API_KEY`   | 外部API服务的访问密钥（如果使用） | sk_test_abcdefghijklmnopqrstuvwxyz                                                       | ❌    |
 
 6. **部署**
    - 点击"Deploy"按钮开始部署
