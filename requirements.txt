@@ -1,4 +1,4 @@
-bs4==4.11.1
+beautifulsoup4==4.11.1
 fake_useragent==1.5.1
 Flask==3.0.3
 numpy==1.23.5
