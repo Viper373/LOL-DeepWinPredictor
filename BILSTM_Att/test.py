@@ -4,7 +4,7 @@ import numpy as np
 import pymongo
 import torch
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
-
+import env
 from BILSTM_Att import BiLSTMModelWithAttention
 import matplotlib.pyplot as plt
 
@@ -15,7 +15,7 @@ if project_root not in sys.path:
     sys.path.append(project_root)
 
 # 从MongoDB加载数据
-mongo_client = pymongo.MongoClient("mongodb://master:27017,node1:27017,node2:27017/moba?replicaSet=rs0")
+mongo_client = pymongo.MongoClient(env.MONGO_URL)
 match_data = mongo_client['moba']['lol'].find({}, {'_id': 0})
 all_data = []
 
