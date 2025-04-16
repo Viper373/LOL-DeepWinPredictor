@@ -1,7 +1,22 @@
 import torch
 import numpy as np
-from torch.utils.data import DataLoader
-from BILSTM_Att import BiLSTMModelWithAttention, LOLDataset
+from torch.utils.data import Dataset, DataLoader
+from BILSTM_Att import BiLSTMModelWithAttention
+
+
+# 定义测试数据集类
+class TestLOLDataset(Dataset):
+    def __init__(self, data):
+        self.data = np.array(data)  # 将数据转换为 numpy 数组
+        self.X = self.data[:].reshape(self.data.shape[0], 1, self.data.shape[1])
+
+    def __len__(self):
+        return len(self.data)
+
+    def __getitem__(self, idx):
+        X = torch.Tensor(self.X[idx])  # 转换为张量
+        return X
+
 
 predict_data = np.array([[137, 57,
                           0, 897, 0.442805,
@@ -21,7 +36,7 @@ hidden_size = 1024
 num_layers = 2
 output_size = 1
 # 加载测试数据
-test_dataset = LOLDataset(predict_data)  # 假设test_data是测试数据，格式与训练数据类似
+test_dataset = TestLOLDataset(predict_data)  # 假设test_data是测试数据，格式与训练数据类似
 test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
 
 # 加载模型
