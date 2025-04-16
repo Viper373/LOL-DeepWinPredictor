@@ -24,7 +24,7 @@ import signal  # 信号处理
 from threading import Event
 from typing import Dict, List
 
-from BILSTM_Att import env
+import env
 
 # 获取当前脚本的目录
 script_dir = os.path.dirname(os.path.abspath(__file__))
