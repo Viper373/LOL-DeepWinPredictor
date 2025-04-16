@@ -1,9 +1,7 @@
 ---
 license: mit
-language:
-  - zh
-base_model:
-  - Viper373/LOL-DeepWinPredictor
+language: zh
+base_model: Viper373/LOL-DeepWinPredictor
 ---
 
 # 🎮 基于深度学习的英雄联盟胜率预测
