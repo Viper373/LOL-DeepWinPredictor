@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>英雄联盟胜率预测</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/themes_base_jquery-ui.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='lol.ico') }}">
+    <script src="{{ url_for('static', filename='js/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/ui_1.12.1_jquery-ui.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/fuse.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/echarts.min.js') }}"></script>
+</head>
+<body>
+<div class="topbar">
+    <div class="title"><img id="author" src="../static/images/avatar.png" alt="Author">英雄联盟胜率预测</div>
+    <div id="current-time"></div>
+</div>
+<div class="container">
+    <div class="selection-container">
+        <div class="team-selection">
+            <div class="team-input">
+                <h3>🅰队阵容选择</h3>
+                <input type="text" class="team-name-input" id="left-team-name" placeholder="输入队伍名称">
+            </div>
+            <img src="../static/images/leagueoflegends.webp">
+            <div class="team-input">
+                <h3>🅱队阵容选择</h3>
+                <input type="text" class="team-name-input" id="right-team-name" placeholder="输入队伍名称">
+            </div>
+        </div>
+        <div class="team">
+            <div class="team-column" id="left-team">
+                <div class="player">
+                    <label>TOP-A</label>
+                    <input type="text" class="hero-input" data-role="TOP" placeholder="选择英雄">
+                </div>
+                <div class="player">
+                    <label>JUN-A</label>
+                    <input type="text" class="hero-input" data-role="JUN" placeholder="选择英雄">
+                </div>
+                <div class="player">
+                    <label>MID-A</label>
+                    <input type="text" class="hero-input" data-role="MID" placeholder="选择英雄">
+                </div>
+                <div class="player">
+                    <label>ADC-A</label>
+                    <input type="text" class="hero-input" data-role="ADC" placeholder="选择英雄">
+                </div>
+                <div class="player">
+                    <label>SUP-A</label>
+                    <input type="text" class="hero-input" data-role="SUP" placeholder="选择英雄">
+                </div>
+            </div>
+
+            <!-- 显示ECharts图表 -->
+            <div id="win-rate-chart"></div>
+
+
+            <div class="team-column" id="right-team">
+                <div class="player">
+                    <label>TOP-B</label>
+                    <input type="text" class="hero-input" data-role="TOP" placeholder="选择英雄">
+                </div>
+                <div class="player">
+                    <label>JUN-B</label>
+                    <input type="text" class="hero-input" data-role="JUN" placeholder="选择英雄">
+                </div>
+                <div class="player">
+                    <label>MID-B</label>
+                    <input type="text" class="hero-input" data-role="MID" placeholder="选择英雄">
+                </div>
+                <div class="player">
+                    <label>ADC-B</label>
+                    <input type="text" class="hero-input" data-role="ADC" placeholder="选择英雄">
+                </div>
+                <div class="player">
+                    <label>SUP-B</label>
+                    <input type="text" class="hero-input" data-role="SUP" placeholder="选择英雄">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <p>获胜方：
+                <span id="winning-team-container">
+                    <span id="winning-team-name"></span>
+                    <img id="winning-team-logo" src="" alt="队伍Logo" style="display: none; width: 30px; height: 30px; vertical-align: middle; margin-left: 10px;">
+                </span>
+        </p>
+        <div id="result" class="result">
+            <div class="win-rates">
+                <div class="A-win-rate">
+                    <p>A队胜率：<span id="A-win-rate"></span></p>
+                </div>
+                <div class="B-win-rate">
+                    <p>B队胜率：<span id="B-win-rate"></span></p>
+                </div>
+            </div>
+            <button id="predict-btn">预测结果</button>
+        </div>
+
+    </div>
+</div>
+<script src="{{ url_for('static', filename='js/beifen.js') }}"></script>
+</body>
+</html>

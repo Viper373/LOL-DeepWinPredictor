@@ -1,0 +1,14 @@
+bs4==4.11.1
+fake_useragent==1.5.1
+Flask==3.0.3
+numpy==1.26.0
+pandas==1.5.2
+pymongo==4.7.2
+pyspark==3.5.1
+Requests==2.32.2
+rich==13.7.1
+scikit_learn==1.4.2
+# torch==2.3.0+cu121
+torch==2.3.0
+torch_geometric==2.5.3
+tqdm==4.66.4
