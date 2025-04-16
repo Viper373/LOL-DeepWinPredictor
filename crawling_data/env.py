@@ -16,10 +16,11 @@ UA = UserAgent().random
 AUTHORIZATION = '7935be4c41d8760a28c05581a7b1f570'
 GTK = "752018433"
 # 代理
-PROXIES = {
-    'http': '127.0.0.1:7890',
-    'https': '127.0.0.1:7890'
-}
+# PROXIES = {
+#     'http': '127.0.0.1:7890',
+#     'https': '127.0.0.1:7890'
+# }
+PROXIES = None
 
 # MongoDB配置
 # 从.env.local加载
@@ -31,7 +32,8 @@ env_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__
 load_dotenv(env_path)
 
 # 主机
-MONGO_URL = os.getenv('MONGO_URL')
+# MONGO_URL = os.getenv('MONGO_URL')
+MONGO_URL = "mongodb+srv://Viper3:ShadowZed666@pythonproject.1rxku.mongodb.net/?retryWrites=true&w=majority&appName=PythonProject"
 
 # LPL赛事
 SEASONS = {
