@@ -1,3 +1,10 @@
+---
+license: mit
+language:
+  - zh
+base_model:
+  - Viper373/LOL-DeepWinPredictor
+---
 
 # 🎮 基于深度学习的英雄联盟胜率预测
 
@@ -16,6 +23,8 @@
 
 ### 🔍 项目概述
 本项目旨在通过深度学习技术预测英雄联盟（LOL）比赛的胜率，为玩家、教练和分析师提供数据支持。通过分析双方阵容选择，结合英雄特性和历史数据，模型能够给出较为准确的胜率预测。
+
+> **📢 重要提示**：由于数据集和模型文件较大，完整的项目文档和部署指南已迁移至Hugging Face平台。请访问 [![Hugging Face](https://img.shields.io/badge/Hugging%20Face-🤗-yellow)](https://huggingface.co/Viper373/LOL-DeepWinPredictor) 获取完整信息。
 
 ### 💡 核心特点
 - 🌵**创新模型架构**：采用双向LSTM（BiLSTM_Att）结合注意力机制，能够有效捕捉英雄间的协同与克制关系
@@ -188,7 +197,7 @@ python app.py
 
 可点击下方按钮立即部署：
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FViper373%2FLOL-DeepWinPredictor&env=MONGO_URL&project-name=lol-deepwinpredictor&repository-name=LOL-DeepWinPredictor)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FViper373%2FLOL-DeepWinPredictor&env=MONGO_URL&env=MYSQL_URL&project-name=lol-deepwinpredictor&repository-name=LOL-DeepWinPredictor)
 
 本项目已配置为可在Vercel上部署。按照以下步骤操作：
 
@@ -218,6 +227,7 @@ python app.py
    | 变量名         | 描述                 | 示例值                                                                                      | 是否必填 |
    |-------------|--------------------|------------------------------------------------------------------------------------------|------|
    | `MONGO_URL` | MongoDB数据库连接字符串    | mongodb+srv://username:password@cluster.mongodb.net/database?retryWrites=true&w=majority | ✅    |
+   | `MYSQL_URL` | MySQL数据库连接字符串      | mysql://username:password@host:port/database                                             | ✅    |
    | `API_KEY`   | 外部API服务的访问密钥（如果使用） | sk_test_abcdefghijklmnopqrstuvwxyz                                                       | ❌    |
 
 6. **部署**
