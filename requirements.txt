@@ -6,11 +6,9 @@ flask_cors==5.0.1
 matplotlib>=3.10.1
 numpy==1.26.0
 orjson==3.10.16
-pandas==2.2.3
 pymongo==4.6.1
 pymysql==1.1.1
 python-dotenv>=1.0.1
 Requests>=2.32.3
 rich>=14.0.0
-scikit_learn==1.4.2
-urllib3>=2.3.0
+torch==2.3.0
