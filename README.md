@@ -9,7 +9,6 @@ base_model:
 [![Python](https://img.shields.io/badge/Python-3.10.7+-blue.svg)](https://www.python.org/) [![PyTorch](https://img.shields.io/badge/PyTorch-2.3.0-red.svg)](https://pytorch.org/) [![Flask](https://img.shields.io/badge/Flask-3.0.3-green.svg)](https://flask.palletsprojects.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Vercel部署状态](https://therealsujitk-vercel-badge.vercel.app/?app=lol-deepwinpredictor&style=flat)](https://lol.viper3.top/predict)
 [![Hugging Face](https://img.shields.io/badge/Hugging%20Face-🤗-yellow?logo=huggingface)](https://huggingface.co/Viper373/LOL-DeepWinPredictor)
-[![HuggingFace Downloads](https://img.shields.io/huggingface/dataset-downloads/Viper373/LOL-DeepWinPredictor)](https://huggingface.co/datasets/Viper373/LOL-DeepWinPredictor)
 [![HuggingFace Spaces](https://img.shields.io/badge/Spaces-README-blue?logo=huggingface)](https://huggingface.co/spaces/Viper373/LOL-DeepWinPredictor?badge=README)
 [![GitHub Clones](https://img.shields.io/badge/dynamic/json?color=success&label=Clones&query=count&url=https://api.github.com/repos/Viper373/LOL-DeepWinPredictor/traffic/clones)](https://github.com/Viper373/LOL-DeepWinPredictor)
 [![GitHub All Releases](https://img.shields.io/github/downloads/Viper373/LOL-DeepWinPredictor/total.svg)](https://github.com/Viper373/LOL-DeepWinPredictor/releases)
