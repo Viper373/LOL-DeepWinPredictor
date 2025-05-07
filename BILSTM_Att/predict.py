@@ -1,7 +1,9 @@
-import torch
 import numpy as np
-from torch.utils.data import Dataset, DataLoader
+import torch
+from torch.utils.data import DataLoader, Dataset
+
 from BILSTM_Att import BiLSTMModelWithAttention
+from tool_utils.log_utils import RichLogger
 
 
 # 定义测试数据集类
@@ -58,4 +60,7 @@ A_win = predictions[0] * 100
 B_win = (1 - predictions[0]) * 100
 
 # 输出预测结果
-print(f"A队胜率：{A_win:.2f}%, B队胜率：{B_win:.2f}%, 胜利情况：{predictions_binary[0]}")
+rich_logger = RichLogger()
+rich_logger.info("开始预测...")
+rich_logger.info(f"A队胜率：{A_win:.2f}%, B队胜率：{B_win:.2f}%, 胜利情况：{predictions_binary[0]}")
+rich_logger.info(f"预测结果: {predictions_binary[0]}")

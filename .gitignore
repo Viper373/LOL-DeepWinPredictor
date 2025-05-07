@@ -2,4 +2,5 @@ venv/
 .idea/
 logs/
 .env.local
-.env.example
+.env
+checkpoints

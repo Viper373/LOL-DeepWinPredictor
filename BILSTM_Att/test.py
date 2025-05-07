@@ -1,12 +1,16 @@
 import os
 import sys
+
+import env
+import matplotlib.pyplot as plt
 import numpy as np
 import pymongo
 import torch
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
-import env
+from sklearn.metrics import (accuracy_score, f1_score, precision_score,
+                             recall_score)
+
 from BILSTM_Att import BiLSTMModelWithAttention
-import matplotlib.pyplot as plt
+from tool_utils.log_utils import RichLogger
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
 # 获取项目的根目录
@@ -122,3 +126,12 @@ fig.tight_layout(rect=[0, 0, 0.95, 0.95])  # 增加上边距
 fig.legend(loc='upper left', bbox_to_anchor=(1, 1), bbox_transform=ax1.transAxes)
 
 plt.show()
+
+rich_logger = RichLogger()
+rich_logger.info("开始测试...")
+
+try:
+    # ... existing code ...
+    rich_logger.info(f"测试结果: {result}")
+except Exception as e:
+    rich_logger.error(f"测试过程中发生错误: {str(e)}")

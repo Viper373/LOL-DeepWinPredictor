@@ -1,6 +1,7 @@
 import json
+
 from pymongo import MongoClient
-from rocketmq.client import Producer, Message
+from rocketmq.client import Message, Producer
 
 # MongoDB连接
 client = MongoClient('mongodb://master:27017,node1:27017,node2:27017/?replicaSet=rs0')

@@ -1,6 +1,7 @@
-import pymongo
 import json
-from rocketmq.client import Producer, Message
+
+import pymongo
+from rocketmq.client import Message, Producer
 
 # MongoDB配置
 mongo_client = pymongo.MongoClient("mongodb://master:27017,node1:27017,node2:27017/moba?replicaSet=rs0")

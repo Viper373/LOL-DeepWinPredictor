@@ -1,11 +1,14 @@
+import os
+
+import numpy as np
+import pymongo
 import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
-import pymongo
-import numpy as np
-import os
 from tqdm import tqdm
+
 from BILSTM_Att import BiLSTMModelWithAttention, LOLDataset
+from tool_utils.log_utils import RichLogger
 
 # 检查CUDA是否可用
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -58,6 +61,9 @@ model = BiLSTMModelWithAttention(input_size, hidden_size, num_layers, output_siz
 criterion = nn.BCELoss()  # 二分类交叉熵损失
 optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
 
+rich_logger = RichLogger()
+rich_logger.info("开始训练...")
+
 # 训练模型
 for epoch in tqdm(range(num_epochs)):
     model.train()
@@ -75,3 +81,5 @@ for epoch in tqdm(range(num_epochs)):
 
 # 保存模型
 torch.save(model.state_dict(), 'BILSTM_Att_best.pt')
+
+rich_logger.info(f"训练完成，模型已保存")

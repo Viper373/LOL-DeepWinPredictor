@@ -1,11 +1,13 @@
 import json
-import matplotlib.pyplot as plt
 import os
+
+import matplotlib.pyplot as plt
 import numpy as np
 import torch
 from rocketmq.client import PushConsumer
 from rocketmq.ffi import _CConsumeStatus
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+from sklearn.metrics import (accuracy_score, f1_score, precision_score,
+                             recall_score)
 
 from BILSTM_Att.BILSTM_Att import BiLSTMModelWithAttention
 
