@@ -56,7 +56,8 @@ base_model:
 
 ```plaintext
 .
-├── app.py                  # Web应用主入口，Flask服务
+├── api/                    # 适配Vercel的API服务
+│   ├── app.py              # Web应用主入口，Flask服务
 ├── main.py                 # 数据全流程自动化主入口
 ├── requirements.txt        # 依赖包列表
 ├── vercel.json             # Vercel部署配置
@@ -92,7 +93,6 @@ base_model:
 ├── templates/              # Jinja2模板（index.html等）
 ├── tool_utils/             # 工具类（数据库、日志、进度条等）
 ├── logs/                   # 日志输出目录
-├── .github/workflows/      # CI/CD配置
 └── ...
 ```
 

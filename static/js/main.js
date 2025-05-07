@@ -8,6 +8,14 @@ function init() {
     initializeChart();
     loadDataAndInitialize();
     initializePredictionButton();
+    updateSiteStats();
+}
+
+function updateSiteStats() {
+    $.get('/site_stats', function(data) {
+        $('#site-visit-count').text(data.visit_count);
+        $('#site-visitor-count').text(data.visitor_count);
+    });
 }
 
 function updateTimeEverySecond() {

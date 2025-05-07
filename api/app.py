@@ -1,4 +1,5 @@
 import json
+import os
 
 import numpy as np
 import torch
@@ -12,7 +13,12 @@ from tool_utils.mysql_utils import MySQLUtils
 
 rich_logger = RichLogger()
 mysql_utils = MySQLUtils()
-app = Flask(__name__)
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
+
+app = Flask(__name__, template_folder=TEMPLATE_DIR, static_folder=STATIC_DIR)
 CORS(app)
 
 # ================== 数据加载 ==================
@@ -42,13 +48,30 @@ except Exception as e:
     rich_logger.error(f"模型加载错误: {e}")
     model = None  # 设置为默认值或采取其他适当的错误处理措施
 
+
 # ================== 路由定义 ==================
 @app.route('/')
 def index():
     """
-    首页渲染
+    首页渲染，并统计访问
     """
+    ip = request.remote_addr
+    mysql_utils.record_visit(ip)
     return render_template('index.html')
+
+
+@app.route('/site_stats', methods=['GET'])
+def site_stats():
+    """
+    获取站点访问次数和访问人数
+    :return: JSON {visit_count, visitor_count}
+    """
+    total, user = mysql_utils.get_site_stats()
+    return jsonify({
+        "visit_count": total,
+        "visitor_count": user
+    })
+
 
 @app.route('/query_hero', methods=['GET'])
 def query_hero():
@@ -58,6 +81,7 @@ def query_hero():
     """
     return jsonify(hero_list)
 
+
 @app.route('/query_win_rate', methods=['GET'])
 def query_win_rate():
     """
@@ -65,6 +89,7 @@ def query_win_rate():
     :return: 英雄胜率JSON
     """
     return jsonify(hero_win_rate)
+
 
 @app.route('/query_team', methods=['GET'])
 def query_team():
@@ -74,6 +99,7 @@ def query_team():
     """
     data = team_list.get("data", team_list) if isinstance(team_list, dict) else team_list
     return jsonify(data)
+
 
 @app.route('/get_echarts_data', methods=['GET'])
 def get_heroes_data():
@@ -105,6 +131,7 @@ def get_heroes_data():
             'sup': row[6],
         }
     return jsonify(heroes_data)
+
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -169,5 +196,6 @@ def predict():
         rich_logger.error(f"预测错误: {e}")
         return jsonify({"error": str(e)}), 400
 
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()

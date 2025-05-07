@@ -14,7 +14,19 @@
 <body>
 <div class="topbar">
     <div class="title"><img id="author" src="../static/images/avatar.png" alt="Author">英雄联盟胜率预测</div>
-    <div id="current-time"></div>
+    <div class="site-stats-header">
+        <span class="stats-badge">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="margin-right: 5px; vertical-align: middle;"><rect x="3" y="10" width="3" height="8" fill="#4FC3F7"/><rect x="9" y="6" width="3" height="12" fill="#1976D2"/><rect x="15" y="3" width="3" height="15" fill="#81C784"/></svg>
+            <span style="margin-right: 3px;">本站访问次数</span><span id="site-visit-count" class="stats-number">--</span>
+        </span>
+        <span class="stats-badge">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="margin-right: 5px; vertical-align: middle;"><circle cx="7" cy="12" r="3" fill="#FFD600"/><circle cx="17" cy="12" r="3" fill="#4CAF50"/><ellipse cx="12" cy="17" rx="7" ry="3" fill="#90CAF9"/></svg>
+            <span style="margin-right: 3px;">本站访问人数</span><span id="site-visitor-count" class="stats-number">--</span>
+        </span>
+    </div>
+    <div class="topbar-right">
+        <div id="current-time"></div>
+    </div>
 </div>
 <div class="container">
     <div class="selection-container">
@@ -83,10 +95,10 @@
     </div>
     <div class="footer">
         <p>获胜方：
-                <span id="winning-team-container">
-                    <span id="winning-team-name"></span>
-                    <img id="winning-team-logo" src="" alt="队伍Logo" style="display: none; width: 30px; height: 30px; vertical-align: middle; margin-left: 10px;">
-                </span>
+            <span id="winning-team-container">
+                <span id="winning-team-name"></span>
+                <img id="winning-team-logo" src="" alt="队伍Logo" style="display: none; width: 30px; height: 30px; vertical-align: middle; margin-left: 10px;">
+            </span>
         </p>
         <div id="result" class="result">
             <div class="win-rates">
@@ -99,7 +111,6 @@
             </div>
             <button id="predict-btn">预测结果</button>
         </div>
-
     </div>
 </div>
 <script src="{{ url_for('static', filename='js/main.js') }}"></script>

@@ -144,7 +144,9 @@ class MySQLUtils:
         """
         查询英雄胜率数据
         """
-        select_sql = 'SELECT hero_id, hero_name, TOP, JUN, MID, ADC, SUP FROM hero_win_rates'
+        select_sql = (
+            "SELECT hero_id, hero_name, TOP, JUN, MID, ADC, SUP FROM hero_win_rates"
+        )
         return self.db_helper.find(select_sql)
 
     def update_hero_counter(self, hero_id: int, counter_lane_dict) -> None:
@@ -162,6 +164,7 @@ class MySQLUtils:
             if old and old[0] and old[0][0]:
                 try:
                     import orjson
+
                     old_dict = orjson.loads(old[0][0].encode("utf-8"))
                 except Exception:
                     old_dict = {}
@@ -172,33 +175,75 @@ class MySQLUtils:
             merged.update(counter_lane_dict)
             # 保证顺序
             from collections import OrderedDict
+
             lane_order = ["TOP", "JUN", "MID", "ADC", "SUP"]
             ordered_merged = OrderedDict()
             for lane in lane_order:
                 if lane in merged:
                     ordered_merged[lane] = merged[lane]
             import orjson
+
             counter_str = orjson.dumps(ordered_merged).decode("utf-8")
             self.db_helper.modify_para(update_sql, (counter_str, hero_id))
         except Exception as e:
             rich_logger.error(f"update_hero_counter 追加/更新失败: {e}")
 
+    def record_visit(self, ip: str) -> None:
+        """
+        记录访问，若IP已存在则+1，否则插入新记录
+        :param ip: 访问者IP
+        :return: None
+        """
+        sql_select = "SELECT visit_count FROM site_stats WHERE visitor_ip=%s"
+        sql_insert = "INSERT INTO site_stats (visit_count, visitor_ip) VALUES (1, %s)"
+        sql_update = "UPDATE site_stats SET visit_count=visit_count+1 WHERE visitor_ip=%s"
+        result = self.db_helper.find_para(sql_select, (ip,))
+        if result and len(result) > 0:
+            self.db_helper.modify_para(sql_update, (ip,))
+        else:
+            self.db_helper.modify_para(sql_insert, (ip,))
+
+    def get_site_stats(self) -> Tuple[int, int]:
+        """
+        获取站点总访问次数和访问人数
+        :return: (总访问次数, 访问人数)
+        """
+        sql_total = "SELECT SUM(visit_count) FROM site_stats"
+        sql_user = "SELECT COUNT(*) FROM site_stats"
+        total_result = self.db_helper.find_one(sql_total)
+        user_result = self.db_helper.find_one(sql_user)
+        total = total_result if total_result is not None else 0
+        user = user_result if user_result is not None else 0
+        return total, user
+
     def init_database(self) -> None:
         """
         初始化数据库
         """
-        # 创建表
-        create_table_sql = """
-                           CREATE TABLE IF NOT EXISTS hero_win_rates
-                           (
-                               hero_id   INT PRIMARY KEY,
-                               hero_name VARCHAR(255),
-                               TOP       FLOAT,
-                               JUN       FLOAT,
-                               MID       FLOAT,
-                               ADC       FLOAT,
-                               SUP       FLOAT,
-                               Counter   TEXT
-                           )
-                           """
-        self.db_helper.modify(create_table_sql)
+        # 创建 hero_win_rates 表
+        create_hero_table_sql = """
+                                CREATE TABLE IF NOT EXISTS hero_win_rates
+                                (
+                                    hero_id   INT PRIMARY KEY,
+                                    hero_name VARCHAR(255),
+                                    TOP       FLOAT,
+                                    JUN       FLOAT,
+                                    MID       FLOAT,
+                                    ADC       FLOAT,
+                                    SUP       FLOAT,
+                                    Counter   TEXT
+                                ); \
+                                """
+        self.db_helper.modify(create_hero_table_sql)
+
+        # 创建 site_stats 表
+        create_stats_table_sql = """
+                                 CREATE TABLE IF NOT EXISTS site_stats
+                                 (
+                                     id          INT PRIMARY KEY AUTO_INCREMENT,
+                                     visit_count INT         NOT NULL DEFAULT 0,
+                                     visitor_ip  VARCHAR(45) NOT NULL,
+                                     last_visit  TIMESTAMP            DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                                 ); \
+                                 """
+        self.db_helper.modify(create_stats_table_sql)
