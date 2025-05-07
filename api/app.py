@@ -1,5 +1,6 @@
 import json
 import os
+import requests
 
 import numpy as np
 import torch
@@ -34,6 +35,20 @@ except FileNotFoundError as e:
     rich_logger.error(f"文件不存在错误: {e}")
     hero_list, hero_win_rate, team_list = [], [], []
 
+# 下载模型文件（如果不存在）
+MODEL_LOCAL_PATH = os.path.join(STATIC_DIR, 'saved_model', 'BILSTM_Att.pt')
+MODEL_REMOTE_URL = 'https://mori.teracloud.jp:443/v2/dav/BILSTM_Att.pt'
+if not os.path.exists(MODEL_LOCAL_PATH):
+    os.makedirs(os.path.dirname(MODEL_LOCAL_PATH), exist_ok=True)
+    rich_logger.info(f"模型文件不存在，正在从云端下载: {MODEL_REMOTE_URL}")
+    r = requests.get(MODEL_REMOTE_URL, stream=True)
+    r.raise_for_status()
+    with open(MODEL_LOCAL_PATH, 'wb') as f:
+        for chunk in r.iter_content(chunk_size=8192):
+            if chunk:
+                f.write(chunk)
+    rich_logger.info("模型下载完成！")
+
 # 加载LSTM模型（添加异常处理）
 try:
     model = BiLSTMModelWithAttention(input_size=32, hidden_size=1024, num_layers=2, output_size=1)
@@ -42,7 +57,7 @@ try:
     :param MODEL_PATH: 模型文件路径
     :return: None
     """
-    model.load_state_dict(torch.load(env.MODEL_PATH, map_location=torch.device('cpu'), weights_only=True))  # 确保在CPU上加载，且只加载权重
+    model.load_state_dict(torch.load(MODEL_LOCAL_PATH, map_location=torch.device('cpu'), weights_only=True))  # 确保在CPU上加载，且只加载权重
     model.eval()
 except Exception as e:
     rich_logger.error(f"模型加载错误: {e}")

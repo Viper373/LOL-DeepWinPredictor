@@ -115,7 +115,12 @@ base_model:
    cd LOL-DeepWinPredictor
    ```
 2. **安装依赖（建议虚拟环境）**
-   - 先取消requirements.txt中的`torch`相关注释（该注释是为了避免云端部署依赖安装的错误）
+   - 先在requirements.txt中加上如下依赖（该操作是为了避免云端部署依赖安装的错误）
+     ```txt
+     torch==2.3.0+cu121
+     torch_geometric==2.5.3
+     ```
+   - 创建虚拟环境
 
    ```bash
    python -m venv venv
