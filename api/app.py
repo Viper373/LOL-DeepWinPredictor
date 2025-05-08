@@ -37,17 +37,9 @@ except FileNotFoundError as e:
 
 # 下载模型文件（如果不存在）
 MODEL_LOCAL_PATH = os.path.join(STATIC_DIR, 'saved_model', 'BILSTM_Att.pt')
-MODEL_REMOTE_URL = 'https://mori.teracloud.jp:443/v2/dav/BILSTM_Att.pt'
 if not os.path.exists(MODEL_LOCAL_PATH):
-    os.makedirs(os.path.dirname(MODEL_LOCAL_PATH), exist_ok=True)
-    rich_logger.info(f"模型文件不存在，正在从云端下载: {MODEL_REMOTE_URL}")
-    r = requests.get(MODEL_REMOTE_URL, stream=True)
-    r.raise_for_status()
-    with open(MODEL_LOCAL_PATH, 'wb') as f:
-        for chunk in r.iter_content(chunk_size=8192):
-            if chunk:
-                f.write(chunk)
-    rich_logger.info("模型下载完成！")
+    rich_logger.error(f"模型文件不存在: {MODEL_LOCAL_PATH}，请先手动上传模型文件到该路径！")
+    raise FileNotFoundError(f"模型文件不存在: {MODEL_LOCAL_PATH}，请先手动上传模型文件到该路径！")
 
 # 加载LSTM模型（添加异常处理）
 try:

@@ -104,7 +104,7 @@ base_model:
 
 ## ⚙️ 私有部署（⭐需先fork仓库进行环境变量的配置）
 
-本项目支持多种私有化部署方式，分为“使用已有模型”和“自行训练模型”两种典型流程。
+本项目支持多种私有化部署方式，分为"使用已有模型"和"自行训练模型"两种典型流程。
 
 ### 1. 使用已有模型（推荐，最快速体验）
  - ⭐觉得项目不错的可以点一个Star微薄支持一下谢谢
@@ -182,7 +182,7 @@ base_model:
 
 **注意事项：**
 
-- 云端部署（Vercel、Netlify、HuggingFace、Koyeb等）**无法在云端训练模型**，只能使用已有模型权重`static/saved_model/BILSTM_Att.pt`，或需自行在本地训练好模型后上传到对应目录再进行云端部署。
+- 云端部署**无法训练模型**，只能使用已有模型权重`static/saved_model/BILSTM_Att.pt`，或需自行在本地训练好模型后上传到对应目录再进行云端部署。
 - ✅推荐先 Fork 本仓库到自己的 GitHub 账号，再进行一键部署，这样可以自定义和管理自己的部署实例。
 - 若需更换模型，需在本地训练好后上传到你的仓库的 `static/saved_model/` 目录。
 
@@ -213,16 +213,16 @@ base_model:
           <img src="https://vercel.com/button" alt="Deploy with Vercel" height="32" style="display:block;margin:auto;"/>
         </a>
       </td>
-      <td align="center" valign="middle">✅</td>
+      <td align="center" valign="middle">❌</td>
     </tr>
     <tr>
       <td align="center" valign="middle"><b>Netlify</b></td>
       <td align="center" valign="middle">
         <a href="https://app.netlify.com/start/deploy?repository=https://github.com/Viper373/LOL-DeepWinPredictor">
-          <img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" height="32" style="display:block;margin:auto;"/>
+          <img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy on Netlify" height="32" style="display:block;margin:auto;"/>
         </a>
       </td>
-      <td align="center" valign="middle">✅</td>
+      <td align="center" valign="middle">❌</td>
     </tr>
     <tr>
       <td align="center" valign="middle"><b>HuggingFace Spaces</b></td>
@@ -240,11 +240,29 @@ base_model:
           <img src="https://www.koyeb.com/static/images/deploy/button.svg" alt="Deploy on Koyeb" height="40" style="display:block;margin:auto;"/>
         </a>
       </td>
-      <td align="center" valign="middle">⛔</td>
+      <td align="center" valign="middle">✅</td>
     </tr>
   </tbody>
 </table>
 
+
+## 🚀 Hugging Face Spaces Docker 部署（推荐）
+
+1. **Fork 本仓库**
+2. **上传模型文件**
+   - 将你训练好的 `BILSTM_Att.pt` 文件上传到 `static/saved_model/` 目录下。
+3. **在仓库根目录添加 Dockerfile**（如未存在）：
+   ```dockerfile
+   FROM python:3.10-slim
+   WORKDIR /app
+   COPY . .
+   RUN pip install --no-cache-dir -r requirements.txt
+   EXPOSE 7860 5000
+   CMD ["python", "api/app.py"]
+   ```
+4. **在 Hugging Face Spaces 创建新 Space，选择 Docker 模式，指向你的仓库**
+5. **配置环境变量**（如数据库等，详见 `.env.example`）
+6. **等待构建完成，访问 Space 即可体验**
 
 ## 🧩 主要功能
 - 阵容分析、胜率预测、可视化展示、英雄搜索、数据更新、异步处理、响应式设计等
