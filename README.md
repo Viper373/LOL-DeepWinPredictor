@@ -89,8 +89,9 @@ pinned: false
 ---
 
 ## 在线体验
-- [Huggingface Space 部署+CF反代](https://lol.viper3.us.kg/)
-- ![在线演示界面](static/images/index_1.png)
+✅[Huggingface Space 部署+CF反代](https://lol.viper3.us.kg/)
+
+![在线演示界面](static/images/index_1.png)
 
 ---
 
@@ -163,6 +164,33 @@ pinned: false
 | Netlify            | [一键部署](https://app.netlify.com/start/deploy?repository=https://github.com/Viper373/LOL-DeepWinPredictor)                                                                                                                                                 | ❌  |
 | HuggingFace Spaces | [体验](https://huggingface.co/spaces/Viper373/LOL-DeepWinPredictor)                                                                                                                                                                                        | ✅  |
 | Koyeb              | [一键部署](https://app.koyeb.com/deploy?type=git&repository=github.com/Viper373/LOL-DeepWinPredictor)                                                                                                                                                        | ✅  |
+
+### GitHub 仓库环境变量设置
+
+在 GitHub Actions 或云端部署时，需要在仓库的 Settings → Secrets and variables → Actions 中添加以下环境变量（参考 `.env.example` 文件）：
+
+| 变量名           | 说明             | 是否必填 |
+|----------------|----------------|--------|
+| MYSQL_HOST     | MySQL主机地址    | 必填   |
+| MYSQL_PORT     | MySQL端口        | 必填   |
+| MYSQL_USER     | MySQL用户名      | 必填   |
+| MYSQL_PASSWORD | MySQL密码        | 必填   |
+| MYSQL_CHARSET  | MySQL字符集      | 必填   |
+| MYSQL_DATABASE | MySQL数据库名    | 必填   |
+| MONGO_URI      | MongoDB连接URI   | 必填   |
+| PROXY          | 代理配置（JSON字符串，例：{'http': 'http://127.0.0.1:7890', 'https': 'http://127.0.0.1:7890'}） | 可选   |
+
+> ⚠️ 代理配置（PROXY）为可选项，若部署环境无法直接访问外网或有特殊网络需求时可设置。
+
+---
+
+### GitHub Actions 自动化数据集更新
+
+本项目已集成 GitHub Actions 工作流（见 `.github/workflows/main.yml`），支持：
+- **定时自动运行**：每周日 0点自动拉取和更新数据集。
+- **手动触发**：可在 GitHub Actions 页面点击手动运行。
+
+只需在仓库设置好环境变量，GitHub Actions 会自动完成数据采集与更新，无需手动操作服务器。
 
 ---
 
