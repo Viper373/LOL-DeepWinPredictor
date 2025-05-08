@@ -181,24 +181,33 @@ class LPL:
         rich_logger.info(f"[LPL] auto_seasonIds: 赛季数据已全部入库，共{len(merged_seasons)}条")
 
     @staticmethod
-    async def get_seasonIds(col_name: str, seasons: Dict[str, str], rich_progress) -> None:
+    async def get_seasonIds(col_name: str, seasons: list, rich_progress) -> None:
         """
         异步生产者-消费者：获取赛季ID并写入数据库。
         :param col_name: MongoDB集合名称
-        :param seasons: 赛季ID映射字典{str: str}
+        :param seasons: 赛季信息列表，每项为dict，需提取id和name，id去重
         :param rich_progress: RichProgressUtils实例
         :return: None
         """
         rich_progress = rich_progress or RichProgressUtils()
         collection = mongo_utils.use_collection(col_name)
         collection.create_index([("season_id", ASCENDING)], unique=True)
+        # 只保留id和name，并对id去重
+        seen_ids = set()
+        season_pairs = []
+        for s in seasons:
+            sid = s.get('id')
+            sname = s.get('name')
+            if sid and sname and sid not in seen_ids:
+                season_pairs.append({"season_name": sname, "season_id": sid})
+                seen_ids.add(sid)
         queue = asyncio.Queue(maxsize=20)
-        fetch_task_id = rich_progress.add_task("[LPL] seasonIDs生产", total=len(seasons))
-        store_task_id = rich_progress.add_task("[LPL] seasonIDs入库", total=len(seasons))
+        fetch_task_id = rich_progress.add_task("[LPL] seasonIDs生产", total=len(season_pairs))
+        store_task_id = rich_progress.add_task("[LPL] seasonIDs入库", total=len(season_pairs))
 
         async def producer():
-            for season_name, season_id in seasons.items():
-                await queue.put({"season_name": season_name, "season_id": season_id})
+            for pair in season_pairs:
+                await queue.put(pair)
                 rich_progress.advance(fetch_task_id)
             await queue.put(None)
 
@@ -214,10 +223,10 @@ class LPL:
                     pass
                 count += 1
                 rich_progress.advance(store_task_id)
-            rich_progress.update(store_task_id, completed=len(seasons))
+            rich_progress.update(store_task_id, completed=len(season_pairs))
 
         await asyncio.gather(producer(), consumer())
-        rich_logger.info(f"爬取完成丨共计[{len(seasons)}]LPL_season")
+        rich_logger.info(f"爬取完成丨共计[{len(season_pairs)}]LPL_season")
 
     async def get_bMatchIds(self, col_name: str, seasons: Dict[str, str], rich_progress) -> None:
         """
