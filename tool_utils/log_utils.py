@@ -151,7 +151,7 @@ class RichLogger:
 
         self.current_date = datetime.now().strftime("%Y-%m-%d")
         self.project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
-        self.logs_dir = os.path.join(self.project_root, "logs", self.current_date)
+        self.logs_dir = os.path.join(self.project_root, "tmp", "logs", self.current_date)
         os.makedirs(self.logs_dir, exist_ok=True)
 
         # 使用main.py作为脚本名，而不是env.py
@@ -244,7 +244,7 @@ class RichLogger:
             if new_date != self.current_date:
                 with self._lock:
                     self.current_date = new_date
-                    self.logs_dir = os.path.join(self.project_root, "logs", self.current_date)
+                    self.logs_dir = os.path.join(self.project_root, "tmp", "logs", self.current_date)
                     self.initialize_handlers()
 
     @staticmethod
