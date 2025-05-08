@@ -89,8 +89,7 @@ pinned: false
 ---
 
 ## 在线体验
-- [https://lol.viper3.top/](https://lol.viper3.top/)
-- [Hugging Face Space](https://huggingface.co/spaces/Viper373/LOL-DeepWinPredictor)
+- [Huggingface Space 部署+CF反代](https://lol.viper3.us.kg/)
 - ![在线演示界面](static/images/index_1.png)
 
 ---
