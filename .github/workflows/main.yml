@@ -33,3 +33,12 @@ jobs:
       - name: 运行 main.py
         run: |
           python main.py
+      - name: 自动发布 Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: dataset-$(date +'%Y/%m/%d')
+          name: dataset更新-$(date +'%Y/%m/%d')
+          body: |
+            本次数据集已自动更新，触发自 GitHub Actions。
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}

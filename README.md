@@ -179,6 +179,7 @@ pinned: false
 | MYSQL_DATABASE | MySQL数据库名    | 必填   |
 | MONGO_URI      | MongoDB连接URI   | 必填   |
 | PROXY          | 代理配置（JSON字符串，例：{'http': 'http://127.0.0.1:7890', 'https': 'http://127.0.0.1:7890'}） | 可选   |
+| GH_TOKEN   | GitHub访问令牌（用于自动发布Release） | 必填   |
 
 > ⚠️ 代理配置（PROXY）为可选项，若部署环境无法直接访问外网或有特殊网络需求时可设置。
 
