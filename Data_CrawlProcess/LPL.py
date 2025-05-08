@@ -253,7 +253,7 @@ class LPL:
                         cookies=self.cookies,
                         proxies=self.proxies
                     )
-                    response = await loop.run_in_executor(None, request_func)
+                    response = await loop.run_in_executor(None, request_func, *tuple())
                     if response.status_code != 200:
                         rich_logger.error(f"获取bMatchId失败，状态码: {response.status_code}")
                         return
