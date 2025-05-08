@@ -14,6 +14,7 @@ COPY --chown=user . /app
 # 设置Flask环境变量
 ENV FLASK_APP=api/app.py
 ENV FLASK_RUN_PORT=7860
+ENV PYTHONPATH=/app
 
 EXPOSE 7860
 
