@@ -228,11 +228,11 @@ class LPL:
         await asyncio.gather(producer(), consumer())
         rich_logger.info(f"爬取完成丨共计[{len(season_pairs)}]LPL_season")
 
-    async def get_bMatchIds(self, col_name: str, seasons: Dict[str, str], rich_progress) -> None:
+    async def get_bMatchIds(self, col_name: str, seasons: list, rich_progress) -> None:
         """
         异步生产者-消费者：获取bMatchId并写入数据库。
         :param col_name: MongoDB集合名称
-        :param seasons: 赛季ID映射字典{str: str}
+        :param seasons: 赛季信息列表，每项为dict，需包含season_id
         :param rich_progress: RichProgressUtils实例
         :return: None
         """
@@ -271,7 +271,7 @@ class LPL:
                 except Exception as _error:
                     rich_logger.error(f"爬取[LPL]bMatchId错误: {_error}")
 
-            urls = [self.url.format(season_id) for season_id in seasons.values()]
+            urls = [self.url.format(season["season_id"]) for season in seasons]
             await asyncio.gather(*(fetch_season_data(url) for url in urls))
 
         await fetch_all_records()
