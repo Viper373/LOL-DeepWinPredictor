@@ -1,3 +1,14 @@
+---
+title: LOL-DeepWinPredictor
+emoji: 🎮
+colorFrom: blue
+colorTo: yellow
+sdk: docker
+sdk_version: "1.0"
+app_file: api/app.py
+pinned: false
+---
+
 # 🎮 基于深度学习的英雄联盟胜率预测
 
 [![Python](https://img.shields.io/badge/Python-3.10.7+-blue.svg)](https://www.python.org/) [![PyTorch](https://img.shields.io/badge/PyTorch-2.3.0-red.svg)](https://pytorch.org/) [![Flask](https://img.shields.io/badge/Flask-3.0.3-green.svg)](https://flask.palletsprojects.com/)
