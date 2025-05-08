@@ -12,11 +12,7 @@ pinned: false
 # 🎮 基于深度学习的英雄联盟胜率预测
 
 [![Python](https://img.shields.io/badge/Python-3.10.7+-blue.svg)](https://www.python.org/) [![PyTorch](https://img.shields.io/badge/PyTorch-2.3.0-red.svg)](https://pytorch.org/) [![Flask](https://img.shields.io/badge/Flask-3.0.3-green.svg)](https://flask.palletsprojects.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Hugging Face](https://img.shields.io/badge/Hugging%20Face-🤗-yellow?logo=huggingface)](https://huggingface.co/Viper373/LOL-DeepWinPredictor)
-[![HuggingFace Spaces](https://img.shields.io/badge/Spaces-README-blue?logo=huggingface)](https://huggingface.co/spaces/Viper373/LOL-DeepWinPredictor?badge=README)
-[![GitHub Clones](https://img.shields.io/badge/dynamic/json?color=success&label=Clones&query=count&url=https://api.github.com/repos/Viper373/LOL-DeepWinPredictor/traffic/clones)](https://github.com/Viper373/LOL-DeepWinPredictor)
-[![GitHub All Releases](https://img.shields.io/github/downloads/Viper373/LOL-DeepWinPredictor/total.svg)](https://github.com/Viper373/LOL-DeepWinPredictor/releases)
+![GitHub last commit](https://img.shields.io/github/last-commit/Viper373/LOL-DeepWinPredictor) ![Hugging Face Space Status](https://img.shields.io/badge/Space-Status-brightgreen) [![HuggingFace Spaces](https://img.shields.io/badge/Hugging%20Face-🤗-yellow?logo=huggingface)](https://huggingface.co/spaces/Viper373/LOL-DeepWinPredictor?badge=README) ![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/Viper373/LOL-DeepWinPredictor/total)
 
 ---
 
