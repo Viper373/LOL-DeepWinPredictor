@@ -1,21 +1,14 @@
-name: Sync to Hugging Face hub
+name: 更新数据集
+
 on:
-  push:
-    branches: [main]
-  # to run this workflow manually from the Actions tab
-  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * 0'  # 每周日 0点运行
 
 jobs:
-  sync-to-hub:
+  run-main:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-          lfs: true
-      - name: Push to hub
-        env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
-          HF_USERNAME: ${{ secrets.HF_USERNAME }}
-          REPO_NAME: ${{ secrets.REPO_NAME }}
-        run: git push https://$HF_USERNAME:$HF_TOKEN@huggingface.co/$HF_USERNAME/REPO_NAME main
+      - name: 运行 main.py
+        run: |
+          python main.py
