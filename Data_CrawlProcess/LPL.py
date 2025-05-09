@@ -271,7 +271,7 @@ class LPL:
                 except Exception as _error:
                     rich_logger.error(f"爬取[LPL]bMatchId错误: {_error}")
 
-            urls = [self.url.format(season["season_id"]) for season in seasons]
+            urls = [self.url.format(season.get("season_id", season.get("id"))) for season in seasons]
             await asyncio.gather(*(fetch_season_data(url) for url in urls))
 
         await fetch_all_records()
