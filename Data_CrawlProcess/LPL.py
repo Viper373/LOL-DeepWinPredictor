@@ -381,7 +381,7 @@ class LPL:
                         rich_logger.error(f"[LPL] processed_data类型错误: {type(processed_data)} | bMatchId: {match.get('bMatchId', 'unknown')}")
                 except Exception as e:
                     match_id = match.get('bMatchId', 'unknown') if isinstance(match, dict) else 'unknown'
-                    snippet = orjson.dumps(match)[:200].decode('utf-8') if isinstance(match, dict) else str(match)[:200]
+                    snippet = orjson.dumps(match)[:100].decode('utf-8') if isinstance(match, dict) else str(match)[:100]
                     rich_logger.error(f"[LPL] process_data单条处理失败: {str(e)} | bMatchId: {match_id} | 数据片段: {snippet} ...")
                 count += 1
                 rich_progress.advance(process_task_id)

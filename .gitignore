@@ -5,3 +5,4 @@ logs/
 .env
 checkpoints
 .vercel
+static/saved_model/BILSTM_Att.pt
