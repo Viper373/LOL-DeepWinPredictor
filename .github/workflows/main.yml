@@ -31,3 +31,16 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           python main.py
+      - name: 配置 Git
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+      - name: 检查变更并提交
+        run: |
+          git add .
+          git diff --cached --quiet || git commit -m "数据自动更新"
+      - name: 推送变更
+        run: |
+          git push origin main
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
