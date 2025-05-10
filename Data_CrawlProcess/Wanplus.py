@@ -642,11 +642,11 @@ class Wanplus:
         :return: None
         """
         mongo_utils.use_db(wanplus_db)
-        # await self.get_eids(wanplus_db, col_eid)
-        # eid_list = [item['eid'] for item in mongo_utils.use_collection(col_eid).find({}, {'eid': 1, '_id': 0})]
-        # await self.get_teamids(wanplus_db, col_team, eid_list)
-        # teamid_list = [item['teamid'] for item in mongo_utils.use_collection(col_team).find({}, {'teamid': 1, '_id': 0})]
-        # await self.get_scheduleids(wanplus_db, col_schedule, teamid_list)
+        await self.get_eids(wanplus_db, col_eid)
+        eid_list = [item['eid'] for item in mongo_utils.use_collection(col_eid).find({}, {'eid': 1, '_id': 0})]
+        await self.get_teamids(wanplus_db, col_team, eid_list)
+        teamid_list = [item['teamid'] for item in mongo_utils.use_collection(col_team).find({}, {'teamid': 1, '_id': 0})]
+        await self.get_scheduleids(wanplus_db, col_schedule, teamid_list)
         scheduleid_list = [item.get('scheduleid') for item in mongo_utils.use_collection(col_schedule).find({}, {'scheduleid': 1, '_id': 0}) if item.get('scheduleid') is not None]
         await self.get_boids(wanplus_db, col_boid, scheduleid_list)
         boids_list = [item['boid'] for item in mongo_utils.use_collection(col_boid).find({}, {'boid': 1, '_id': 0})]
