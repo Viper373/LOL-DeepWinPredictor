@@ -244,7 +244,7 @@ class RichLogger:
             if new_date != self.current_date:
                 with self._lock:
                     self.current_date = new_date
-                    self.logs_dir = os.path.join(self.project_root, "tmp", "logs", self.current_date)
+                    self.logs_dir = os.path.join("/tmp", "logs", self.current_date)
                     self.initialize_handlers()
 
     @staticmethod

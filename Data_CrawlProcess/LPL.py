@@ -181,7 +181,7 @@ class LPL:
         rich_logger.info(f"[LPL] auto_seasonIds: 赛季数据已全部入库，共{len(merged_seasons)}条")
 
     @staticmethod
-    async def get_seasonIds(col_name: str, seasons: list, rich_progress) -> None:
+    async def get_seasonIds(col_name: str, seasons: Dict, rich_progress) -> None:
         """
         异步生产者-消费者：获取赛季ID并写入数据库。
         :param col_name: MongoDB集合名称
@@ -228,7 +228,7 @@ class LPL:
         await asyncio.gather(producer(), consumer())
         rich_logger.info(f"爬取完成丨共计[{len(season_pairs)}]LPL_season")
 
-    async def get_bMatchIds(self, col_name: str, seasons: list, rich_progress) -> None:
+    async def get_bMatchIds(self, col_name: str, seasons: Dict, rich_progress) -> None:
         """
         异步生产者-消费者：获取bMatchId并写入数据库。
         :param col_name: MongoDB集合名称
@@ -255,7 +255,6 @@ class LPL:
                     )
                     response = await loop.run_in_executor(None, request_func, *tuple())
                     if response.status_code != 200:
-                        rich_logger.error(f"获取bMatchId失败，状态码: {response.status_code}")
                         return
                     seasons_data = orjson.loads(response.text)
                     if seasons_data.get('status') == "0":

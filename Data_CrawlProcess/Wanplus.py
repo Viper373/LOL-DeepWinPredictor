@@ -359,7 +359,7 @@ class Wanplus:
 
     async def get_scheduleids(self, db_name: str, col_name: str, teamid_list: list) -> None:
         """
-        异步生产者-消费者：获取赛程ID并写入数据库。
+        异步并发生产者-消费者：获取赛程ID并写入数据库。
         :param db_name: MongoDB数据库名称
         :param col_name: MongoDB集合名称
         :param teamid_list: 队伍ID列表
@@ -369,13 +369,12 @@ class Wanplus:
         collection = mongo_utils.use_collection(col_name)
         collection.create_index([("scheduleid", ASCENDING)], unique=True)
         queue = asyncio.Queue(maxsize=100)
-        # 先统计所有scheduleid的总数
-        scheduleid_records = []
-        loop = asyncio.get_event_loop()
-        for _teamid in teamid_list:
+
+        async def fetch_one(_teamid):
             params = copy.deepcopy(self.params)
             params['teamId'] = _teamid
             try:
+                loop = asyncio.get_event_loop()
                 request_func = partial(
                     requests.post,
                     url=self.team_url,
@@ -386,20 +385,29 @@ class Wanplus:
                 )
                 response = await loop.run_in_executor(None, request_func)
                 if response.status_code != 200:
-                    continue
+                    return []
                 response_json = orjson.loads(response.text)
                 data = response_json.get('data')
                 if not data:
-                    continue
-                for d in data:
-                    if d.get('scheduleid'):
-                        record = {
-                            'scheduleid': d.get('scheduleid'),
-                            'desc': f"{d.get('oneseedname')} vs {d.get('twoseedname')}丨{d.get('starttime')}"
-                        }
-                        scheduleid_records.append(record)
+                    return []
+                return [
+                    {
+                        'scheduleid': d.get('scheduleid'),
+                        'desc': f"{d.get('oneseedname')} vs {d.get('twoseedname')}丨{d.get('starttime')}"
+                    }
+                    for d in data if d.get('scheduleid')
+                ]
             except Exception:
-                continue
+                return []
+
+        sem = asyncio.Semaphore(20)
+
+        async def sem_fetch(_teamid):
+            async with sem:
+                return await fetch_one(_teamid)
+
+        all_results = await asyncio.gather(*(sem_fetch(tid) for tid in teamid_list))
+        scheduleid_records = [item for sublist in all_results for item in sublist]
         total_scheduleids = len(scheduleid_records)
         fetch_task_id = self.rich_progress.add_task("[Wanplus] scheduleids生产", total=total_scheduleids)
         store_task_id = self.rich_progress.add_task("[Wanplus] scheduleids入库", total=total_scheduleids)
@@ -429,7 +437,7 @@ class Wanplus:
 
     async def get_boids(self, db_name: str, col_name: str, scheduleid_list: list) -> None:
         """
-        异步生产者-消费者：获取boid并写入数据库。
+        并发异步爬取boid并写入数据库，极大提升速度。
         :param db_name: MongoDB数据库名称
         :param col_name: MongoDB集合名称
         :param scheduleid_list: 赛程ID列表
@@ -438,75 +446,80 @@ class Wanplus:
         mongo_utils.use_db(db_name)
         collection = mongo_utils.use_collection(col_name)
         collection.create_index([("boid", ASCENDING)], unique=True)
-        queue = asyncio.Queue(maxsize=100)
-        # 先统计所有boid的总数
-        boid_records = []
-        loop = asyncio.get_event_loop()
-        for _scheduleid in scheduleid_list:
-            url = self.match_url.format(_scheduleid)
-            try:
-                request_func = partial(
-                    requests.get,
-                    url=url,
-                    headers=self.headers,
-                    cookies=self.cookies,
-                    proxies=self.proxies
-                )
-                response = await loop.run_in_executor(None, request_func)
-                if response.status_code != 200:
-                    continue
-                soup = BeautifulSoup(response.text, 'html.parser')
-                team_detail_ov = soup.find('ul', attrs={'class': 'team-detail ov'})
-                if not team_detail_ov:
-                    continue
+        total = len(scheduleid_list)
+        fetch_task_id = self.rich_progress.add_task("[Wanplus] boid生产", total=total)
+        sem = asyncio.Semaphore(50)
+
+        async def fetch_one(_scheduleid):
+            async with sem:
+                url = self.match_url.format(_scheduleid)
                 try:
-                    team_left = team_detail_ov.find('li', attrs={'class': 'team-left'}).find('a').find('span').text
-                    bo_time = team_detail_ov.find('span', attrs={'class': 'time'}).text
-                    team_right = team_detail_ov.find('li', attrs={'class': 'team-right tr'}).find('a').find('span').text
-                    game_div = soup.find('div', attrs={'class': 'game'})
-                    if not game_div:
-                        continue
-                    data_matchid = game_div.find_all('a')
-                    for match_id in data_matchid:
-                        bo_count = match_id.text[-1]
-                        bo_detail = f"{bo_time}丨{team_left} vs {team_right}丨BO{bo_count}"
-                        bo_id = match_id.get('data-matchid')
-                        if bo_id:
-                            record = {
-                                'boid': bo_id,
-                                'desc': bo_detail
-                            }
-                            boid_records.append(record)
+                    loop = asyncio.get_event_loop()
+                    request_func = partial(
+                        requests.get,
+                        url=url,
+                        headers=self.headers,
+                        cookies=self.cookies,
+                        proxies=self.proxies
+                    )
+                    response = await loop.run_in_executor(None, request_func, *tuple())
+                    if response.status_code != 200:
+                        self.rich_progress.advance(fetch_task_id)
+                        return []
+                    soup = BeautifulSoup(response.text, 'html.parser')
+                    team_detail_ov = soup.find('ul', attrs={'class': 'team-detail ov'})
+                    if not team_detail_ov:
+                        self.rich_progress.advance(fetch_task_id)
+                        return []
+                    try:
+                        team_left = team_detail_ov.find('li', attrs={'class': 'team-left'}).find('a').find('span').text
+                        bo_time = team_detail_ov.find('span', attrs={'class': 'time'}).text
+                        team_right = team_detail_ov.find('li', attrs={'class': 'team-right tr'}).find('a').find('span').text
+                        game_div = soup.find('div', attrs={'class': 'game'})
+                        if not game_div:
+                            self.rich_progress.advance(fetch_task_id)
+                            return []
+                        data_matchid = game_div.find_all('a')
+                        records = []
+                        for match_id in data_matchid:
+                            bo_count = match_id.text[-1]
+                            bo_detail = f"{bo_time}丨{team_left} vs {team_right}丨BO{bo_count}"
+                            bo_id = match_id.get('data-matchid')
+                            if bo_id:
+                                record = {
+                                    'boid': bo_id,
+                                    'desc': bo_detail
+                                }
+                                records.append(record)
+                        self.rich_progress.advance(fetch_task_id)
+                        return records
+                    except Exception:
+                        self.rich_progress.advance(fetch_task_id)
+                        return []
                 except Exception:
-                    continue
-            except Exception:
-                continue
-        total_boids = len(boid_records)
-        fetch_task_id = self.rich_progress.add_task("[Wanplus] boids生产", total=total_boids)
-        store_task_id = self.rich_progress.add_task("[Wanplus] boids入库", total=total_boids)
+                    self.rich_progress.advance(fetch_task_id)
+                    return []
 
-        async def producer():
-            for record in boid_records:
-                await queue.put(record)
-                self.rich_progress.advance(fetch_task_id)
-            await queue.put(None)
+        # 1. 生产阶段：并发爬取所有boid
+        all_results = await asyncio.gather(*(fetch_one(sid) for sid in scheduleid_list))
+        boid_records = [item for sublist in all_results for item in sublist]
 
-        async def consumer():
-            count = 0
-            while True:
-                item = await queue.get()
-                if item is None:
-                    break
-                try:
-                    collection.insert_one(item)
-                except errors.DuplicateKeyError:
-                    pass
-                count += 1
-                self.rich_progress.advance(store_task_id)
-            self.rich_progress.update(store_task_id, completed=total_boids)
-            rich_logger.info(f"[Wanplus] boid爬取完成丨共{count}条")
+        # 2. 动态设置入库进度条
+        store_task_id = self.rich_progress.add_task("[Wanplus] boid入库", total=len(boid_records))
 
-        await asyncio.gather(producer(), consumer())
+        # 3. 入库阶段
+        batch_size = 1000
+        count = 0
+        for i in range(0, len(boid_records), batch_size):
+            batch = boid_records[i:i+batch_size]
+            try:
+                mongo_utils.insert_many(col_name, batch)
+            except errors.BulkWriteError:
+                pass  # 跳过重复主键等错误
+            count += len(batch)
+            self.rich_progress.advance(store_task_id, advance=len(batch))
+        self.rich_progress.update(store_task_id, completed=count)
+        rich_logger.info(f"[Wanplus] boid爬取完成丨共{count}条")
 
     async def get_match_data(self, boids_list: List[str], db_name: str, col_name: str):
         """
@@ -522,7 +535,7 @@ class Wanplus:
         hero_win_rates = self.hero_win_rates
         total_count = len(boids_list)
         process_queue = asyncio.Queue(maxsize=500)
-        sem = asyncio.Semaphore(100)
+        sem = asyncio.Semaphore(200)
 
         async def fetcher():
             async with aiohttp.ClientSession(timeout=session_timeout) as session:
@@ -629,12 +642,12 @@ class Wanplus:
         :return: None
         """
         mongo_utils.use_db(wanplus_db)
-        await self.get_eids(wanplus_db, col_eid)
-        eid_list = [item['eid'] for item in mongo_utils.use_collection(col_eid).find({}, {'eid': 1, '_id': 0})]
-        await self.get_teamids(wanplus_db, col_team, eid_list)
-        teamid_list = [item['teamid'] for item in mongo_utils.use_collection(col_team).find({}, {'teamid': 1, '_id': 0})]
-        await self.get_scheduleids(wanplus_db, col_schedule, teamid_list)
-        scheduleid_list = [item['scheduleid'] for item in mongo_utils.use_collection(col_schedule).find({}, {'scheduleid': 1, '_id': 0})]
+        # await self.get_eids(wanplus_db, col_eid)
+        # eid_list = [item['eid'] for item in mongo_utils.use_collection(col_eid).find({}, {'eid': 1, '_id': 0})]
+        # await self.get_teamids(wanplus_db, col_team, eid_list)
+        # teamid_list = [item['teamid'] for item in mongo_utils.use_collection(col_team).find({}, {'teamid': 1, '_id': 0})]
+        # await self.get_scheduleids(wanplus_db, col_schedule, teamid_list)
+        scheduleid_list = [item.get('scheduleid') for item in mongo_utils.use_collection(col_schedule).find({}, {'scheduleid': 1, '_id': 0}) if item.get('scheduleid') is not None]
         await self.get_boids(wanplus_db, col_boid, scheduleid_list)
         boids_list = [item['boid'] for item in mongo_utils.use_collection(col_boid).find({}, {'boid': 1, '_id': 0})]
         await self.get_match_data(boids_list, wanplus_db, col_match)

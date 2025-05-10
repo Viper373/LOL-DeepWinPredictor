@@ -58,7 +58,7 @@ class Process:
                 playerLocation = d["positionName"][:3]
                 winRate = d["positionWinRate"]
                 hero_win_rates[f'{heroId}{playerLocation}'] = winRate
-            rich_logger.info(f"[Process] 成功加载英雄胜率数据丨共[{len(hero_win_rates)}]条")
+            rich_logger.info(f"[Process] 成功加载英雄胜率数据丨共{len(hero_win_rates)}条")
             return hero_win_rates
         except Exception as e:
             rich_logger.error(f"[Process] 读取英雄胜率数据失败: {str(e)}")

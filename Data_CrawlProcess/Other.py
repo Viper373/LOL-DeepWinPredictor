@@ -405,6 +405,7 @@ class Other:
                 params=self.team_list_params,
                 cookies=self.cookies,
                 headers=self.team_list_headers,
+                verify=False  # 忽略SSL证书校验
             )
             if response.status_code != 200:
                 rich_logger.error(
