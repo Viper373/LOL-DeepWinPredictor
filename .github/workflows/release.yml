@@ -1,4 +1,4 @@
-name: Always Release
+name: Auto Release
 
 on:
   push:
@@ -47,56 +47,6 @@ jobs:
             git show HEAD > diff.txt
           fi
 
-      - name: Generate release notes with LLM (primary)
-        id: llm1
-        run: |
-          set -e
-          jq -n --rawfile commit commit_msg.txt --rawfile diff diff.txt '
-            {
-              model: "gpt-4o-mini",
-              messages: [
-                {"role": "system", "content": "You are a helpful assistant."},
-                {"role": "user", "content": ("请用简洁中文总结以下代码变更内容，适合用作 GitHub Release 发布日志，只输出更新日志内容，不要输出分析过程、建议、代码片段或多余解释。\n\n" + $commit + "\n\n变更详情：\n" + $diff)}
-              ]
-            }
-          ' > payload.json
-          response=$(curl -sS -X POST "https://api.chatanywhere.tech/v1/chat/completions" \
-            -H "Authorization: Bearer sk-aKcwXkHYsIKmQ7ZZuaiItE2iw498L7OX8krxkXI5CZ6Q6r44" \
-            -H "Content-Type: application/json" \
-            -d @payload.json)
-          echo "$response" > llm1.json
-          note=$(jq -r '.choices[0].message.content // empty' llm1.json)
-          if [ -z "$note" ]; then
-            echo "llm1_failed=true" >> $GITHUB_ENV
-          else
-            echo "$note" > release_note.txt
-            echo "llm1_failed=false" >> $GITHUB_ENV
-          fi
-
-      - name: Generate release notes with LLM (fallback)
-        if: env.llm1_failed == 'true'
-        id: llm2
-        run: |
-          set -e
-          jq -n --rawfile commit commit_msg.txt --rawfile diff diff.txt '
-            {
-              model: "free:Qwen3-30B-A3B",
-              messages: [
-                {"role": "user", "content": ("请用简洁中文总结以下代码变更内容，适合用作 GitHub Release 发布日志，只输出更新日志内容，不要输出分析过程、建议、代码片段或多余解释。\n\n" + $commit + "\n\n变更详情：\n" + $diff)}
-              ]
-            }
-          ' > payload.json
-          response=$(curl -sS -X POST "https://api.suanli.cn/v1/chat/completions" \
-            -H "Authorization: Bearer sk-W0rpStc95T7JVYVwDYc29IyirjtpPPby6SozFMQr17m8KWeo" \
-            -H "Content-Type: application/json" \
-            -d @payload.json)
-          echo "$response" > llm2.json
-          note=$(jq -r '.choices[0].message.content // empty' llm2.json)
-          if [ -z "$note" ]; then
-            note="自动生成发布日志失败，请手动补充。"
-          fi
-          echo "$note" > release_note.txt
-
       - name: Create tag and release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -105,5 +55,5 @@ jobs:
           git config user.email github-actions@github.com
           git tag ${{ steps.get_tag.outputs.tag }}
           git push origin ${{ steps.get_tag.outputs.tag }}
-          note="$(cat release_note.txt)"
+          note="$(cat commit_msg.txt)"
           gh release create ${{ steps.get_tag.outputs.tag }} --notes "$note" --title "${{ steps.get_tag.outputs.tag }}"
