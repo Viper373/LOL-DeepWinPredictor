@@ -1,21 +1,45 @@
+name: Always Release
+
 on:
   push:
     branches:
       - main
 
-name: Release
-
 jobs:
-  release-please:
+  always-release:
     runs-on: ubuntu-latest
     steps:
-      - uses: GoogleCloudPlatform/release-please-action@v3
-        id: release
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          release-type: simple
-          package-name: standard-version
-          include-v-in-tag: true
-          bump-minor-pre-major: true
-          bump-patch-for-minor-pre-major: true
-          changelog-types: '[{"type": "types", "section":"Types", "hidden": false},{"type": "revert", "section":"Reverts", "hidden": false},{"type": "feat", "section": "Features", "hidden": false},{"type": "fix", "section": "Bug Fixes", "hidden": false},{"type": "improvement", "section": "Feature Improvements", "hidden": false},{"type": "docs", "section":"Docs", "hidden": false},{"type": "style", "section":"Styling", "hidden": false},{"type": "refactor", "section":"Code Refactoring", "hidden": false},{"type": "perf", "section":"Performance Improvements", "hidden": false},{"type": "test", "section":"Tests", "hidden": false},{"type": "build", "section":"Build System", "hidden": false},{"type": "ci", "section":"CI", "hidden":false},{"type": "chore", "section":"Chores", "hidden": false}]'
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Get latest tag
+        id: get_tag
+        run: |
+          git fetch --tags
+          latest_tag=$(git tag --list 'v*' --sort=-v:refname | head -n 1)
+          if [ -z "$latest_tag" ]; then
+            echo "tag=v1.0" >> $GITHUB_OUTPUT
+          else
+            IFS='.' read -r major minor <<<"${latest_tag#v}"
+            if [[ -z "$minor" ]]; then
+              minor=0
+            fi
+            if (( minor < 9 )); then
+              minor=$((minor+1))
+              echo "tag=v$major.$minor" >> $GITHUB_OUTPUT
+            else
+              major=$((major+1))
+              minor=0
+              echo "tag=v$major.$minor" >> $GITHUB_OUTPUT
+            fi
+          fi
+
+      - name: Create tag and release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git tag ${{ steps.get_tag.outputs.tag }}
+          git push origin ${{ steps.get_tag.outputs.tag }}
+          gh release create ${{ steps.get_tag.outputs.tag }} --generate-notes --title "${{ steps.get_tag.outputs.tag }}"
