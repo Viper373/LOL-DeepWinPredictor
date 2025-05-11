@@ -517,7 +517,8 @@ class Wanplus:
             except errors.BulkWriteError:
                 pass  # 跳过重复主键等错误
             count += len(batch)
-            self.rich_progress.advance(store_task_id, advance=len(batch))
+            for _ in range(len(batch)):
+                self.rich_progress.advance(store_task_id)
         self.rich_progress.update(store_task_id, completed=count)
         rich_logger.info(f"[Wanplus] boid爬取完成丨共{count}条")
 
