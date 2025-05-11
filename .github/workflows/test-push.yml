@@ -19,6 +19,9 @@ jobs:
         run: |
           git add test.txt
           git diff --cached --quiet || git commit -m "test: 测试自动推送权限"
+      - name: 禁用 LFS locks verify
+        run: |
+          git config lfs.https://github.com/${{ github.repository }}.git/info/lfs.locksverify false
       - name: 推送变更
         run: |
           git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.git
