@@ -52,21 +52,31 @@ jobs:
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
         run: |
-          # 获取 diff 内容
-          diff_content=$(cat diff.txt)
-          # 调用 API 生成带 emoji 的结构化 Notes
+          # 构建 JSON 请求体并保存到临时文件
+          cat << EOF > request.json
+          {
+            "model": "deepseek/deepseek-chat-v3-0324:free",
+            "messages": [
+              {
+                "role": "user",
+                "content": "请根据以下代码差异生成符合 GitHub Release 标准的 changelog，要求：\n1. 使用 ### 分类标题\n2. 每项添加合适 emoji\n3. 简明扼要描述变更\n\n代码差异：\n"
+              }
+            ]
+          }
+          EOF
+
+          # 将 diff.txt 内容追加到 JSON 请求体末尾（转义双引号）
+          echo -n '"' >> request.json
+          cat diff.txt | sed 's/"/\\"/g' >> request.json
+          echo '"' >> request.json
+          echo '}' >> request.json
+
+          # 调用 API（使用文件流避免参数超长）
           response=$(curl -s https://openrouter.ai/api/v1/chat/completions  \
             -H "Content-Type: application/json" \
             -H "Authorization: Bearer $OPENROUTER_API_KEY" \
-            -d '{
-              "model": "deepseek/deepseek-chat-v3-0324:free",
-              "messages": [
-                {
-                  "role": "user",
-                  "content": "请根据以下代码差异生成符合 GitHub Release 标准的 changelog，要求：\n1. 使用 ### 分类标题\n2. 每项添加合适 emoji\n3. 简明扼要描述变更\n\n代码差异：\n'"$diff_content"'"
-                }
-              ]
-            }')
+            --data-binary @request.json)
+
           # 提取生成内容
           generated_notes=$(echo "$response" | jq -r '.choices[0].message.content')
           echo "generated_notes=$generated_notes" >> $GITHUB_ENV
