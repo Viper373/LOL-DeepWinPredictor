@@ -18,27 +18,34 @@ jobs:
           git fetch --tags
           latest_tag=$(git tag --list 'v*' --sort=-v:refname | head -n 1)
           if [ -z "$latest_tag" ]; then
-            echo "tag=v1.0" >> $GITHUB_OUTPUT
+            echo "tag=v1.0.0" >> $GITHUB_OUTPUT
           else
-            IFS='.' read -r major minor <<<"${latest_tag#v}"
-            if [[ -z "$minor" ]]; then
-              minor=0
-            fi
-            if (( minor < 9 )); then
-              minor=$((minor+1))
-              echo "tag=v$major.$minor" >> $GITHUB_OUTPUT
+            IFS='.' read -r major minor patch <<<"${latest_tag#v}"
+            if [[ -z "$minor" ]]; then minor=0; fi
+            if [[ -z "$patch" ]]; then patch=0; fi
+            if (( patch < 9 )); then
+              patch=$((patch+1))
             else
-              major=$((major+1))
-              minor=0
-              echo "tag=v$major.$minor" >> $GITHUB_OUTPUT
+              patch=0
+              if (( minor < 9 )); then
+                minor=$((minor+1))
+              else
+                minor=0
+                major=$((major+1))
+              fi
             fi
+            echo "tag=v$major.$minor.$patch" >> $GITHUB_OUTPUT
           fi
 
       - name: Collect git diff
         id: diff
         run: |
           git log -1 --pretty=format:"%s%n%n%b" > commit_msg.txt
-          git diff HEAD^ HEAD > diff.txt
+          if git rev-parse HEAD^ >/dev/null 2>&1; then
+            git diff HEAD^ HEAD > diff.txt
+          else
+            git show HEAD > diff.txt
+          fi
           echo "commit_message<<EOF" >> $GITHUB_OUTPUT
           cat commit_msg.txt >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
