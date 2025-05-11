@@ -46,17 +46,13 @@ jobs:
           else
             git show HEAD > diff.txt
           fi
-          echo "commit_message<<EOF" >> $GITHUB_OUTPUT
-          cat commit_msg.txt >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
-          echo "diff_content<<EOF" >> $GITHUB_OUTPUT
-          cat diff.txt >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
 
       - name: Generate release notes with LLM (primary)
         id: llm1
         run: |
           set -e
+          COMMIT_MSG="$(cat commit_msg.txt)"
+          DIFF_CONTENT="$(cat diff.txt)"
           payload=$(jq -n \
             --arg msg "请用简洁中文总结以下代码变更内容，适合用作 GitHub Release 发布日志：\n\n$COMMIT_MSG\n\n变更详情：\n$DIFF_CONTENT" \
             '{model:"gpt-4o-mini",messages:[{"role":"system","content":"You are a helpful assistant."},{"role":"user","content":$msg}]}'
@@ -68,22 +64,19 @@ jobs:
           echo "$response" > llm1.json
           note=$(jq -r '.choices[0].message.content // empty' llm1.json)
           if [ -z "$note" ]; then
-            echo "llm1_failed=true" >> $GITHUB_OUTPUT
+            echo "llm1_failed=true" >> $GITHUB_ENV
           else
-            echo "release_note<<EOF" >> $GITHUB_OUTPUT
-            echo "$note" >> $GITHUB_OUTPUT
-            echo "EOF" >> $GITHUB_OUTPUT
-            echo "llm1_failed=false" >> $GITHUB_OUTPUT
+            echo "$note" > release_note.txt
+            echo "llm1_failed=false" >> $GITHUB_ENV
           fi
-        env:
-          COMMIT_MSG: ${{ steps.diff.outputs.commit_message }}
-          DIFF_CONTENT: ${{ steps.diff.outputs.diff_content }}
 
       - name: Generate release notes with LLM (fallback)
-        if: steps.llm1.outputs.llm1_failed == 'true'
+        if: env.llm1_failed == 'true'
         id: llm2
         run: |
           set -e
+          COMMIT_MSG="$(cat commit_msg.txt)"
+          DIFF_CONTENT="$(cat diff.txt)"
           payload=$(jq -n \
             --arg msg "请用简洁中文总结以下代码变更内容，适合用作 GitHub Release 发布日志：\n\n$COMMIT_MSG\n\n变更详情：\n$DIFF_CONTENT" \
             '{model:"free:Qwen3-30B-A3B",messages:[{"role":"user","content":$msg}]}'
@@ -97,12 +90,7 @@ jobs:
           if [ -z "$note" ]; then
             note="自动生成发布日志失败，请手动补充。"
           fi
-          echo "release_note<<EOF" >> $GITHUB_OUTPUT
-          echo "$note" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
-        env:
-          COMMIT_MSG: ${{ steps.diff.outputs.commit_message }}
-          DIFF_CONTENT: ${{ steps.diff.outputs.diff_content }}
+          echo "$note" > release_note.txt
 
       - name: Create tag and release
         env:
@@ -112,9 +100,5 @@ jobs:
           git config user.email github-actions@github.com
           git tag ${{ steps.get_tag.outputs.tag }}
           git push origin ${{ steps.get_tag.outputs.tag }}
-          if [ "${{ steps.llm1.outputs.llm1_failed }}" = "true" ]; then
-            note="${{ steps.llm2.outputs.release_note }}"
-          else
-            note="${{ steps.llm1.outputs.release_note }}"
-          fi
+          note="$(cat release_note.txt)"
           gh release create ${{ steps.get_tag.outputs.tag }} --notes "$note" --title "${{ steps.get_tag.outputs.tag }}"
