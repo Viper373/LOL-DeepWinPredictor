@@ -65,20 +65,24 @@ jobs:
           }
           EOF
 
-          # 将 diff.txt 内容追加到 JSON 请求体末尾（转义双引号）
+          # 将 diff.txt 内容追加到 JSON 请求体末尾（完整转义）
           echo -n '"' >> request.json
-          cat diff.txt | sed 's/"/\\"/g' >> request.json
+          cat diff.txt | jq -R -s '@json' | jq . >> request.json
           echo '"' >> request.json
           echo '}' >> request.json
 
-          # 调用 API（使用文件流避免参数超长）
+          # 调用 API 并捕获错误
           response=$(curl -s https://openrouter.ai/api/v1/chat/completions  \
             -H "Content-Type: application/json" \
             -H "Authorization: Bearer $OPENROUTER_API_KEY" \
             --data-binary @request.json)
 
-          # 提取生成内容
-          generated_notes=$(echo "$response" | jq -r '.choices[0].message.content')
+          # 提取生成内容（添加错误处理）
+          generated_notes=$(echo "$response" | jq -r '.choices[0].message.content // empty')
+          if [ -z "$generated_notes" ]; then
+            echo "Error: Failed to generate notes, using default message."
+            generated_notes="自动生成失败，请手动填写发布说明。"
+          fi
           echo "generated_notes=$generated_notes" >> $GITHUB_ENV
 
       - name: Create tag and release
@@ -89,6 +93,6 @@ jobs:
           git config user.email github-actions@github.com
           git tag ${{ steps.get_tag.outputs.tag }}
           git push origin ${{ steps.get_tag.outputs.tag }}
-          # 使用 AI 生成的 Notes
+          # 使用 AI 生成的 Notes 或默认消息
           note="${{ env.generated_notes }}"
           gh release create ${{ steps.get_tag.outputs.tag }} --notes "$note" --title "${{ steps.get_tag.outputs.tag }}"
