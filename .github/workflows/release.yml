@@ -51,16 +51,18 @@ jobs:
         id: llm1
         run: |
           set -e
-          COMMIT_MSG="$(cat commit_msg.txt)"
-          DIFF_CONTENT="$(cat diff.txt)"
-          payload=$(jq -n \
-            --arg msg "请用简洁中文总结以下代码变更内容，适合用作 GitHub Release 发布日志：\n\n$COMMIT_MSG\n\n变更详情：\n$DIFF_CONTENT" \
-            '{model:"gpt-4o-mini",messages:[{"role":"system","content":"You are a helpful assistant."},{"role":"user","content":$msg}]}'
-          )
+          jq -Rs '
+            {model:"gpt-4o-mini",
+             messages:[
+               {"role":"system","content":"You are a helpful assistant."},
+               {"role":"user","content":"请用简洁中文总结以下代码变更内容，适合用作 GitHub Release 发布日志：\n\n" + input[0] + "\n\n变更详情：\n" + input[1]}
+             ]
+            }
+          ' commit_msg.txt diff.txt > payload.json
           response=$(curl -sS -X POST "https://api.chatanywhere.tech/v1/chat/completions" \
             -H "Authorization: Bearer sk-aKcwXkHYsIKmQ7ZZuaiItE2iw498L7OX8krxkXI5CZ6Q6r44" \
             -H "Content-Type: application/json" \
-            -d "$payload")
+            -d @payload.json)
           echo "$response" > llm1.json
           note=$(jq -r '.choices[0].message.content // empty' llm1.json)
           if [ -z "$note" ]; then
@@ -75,16 +77,17 @@ jobs:
         id: llm2
         run: |
           set -e
-          COMMIT_MSG="$(cat commit_msg.txt)"
-          DIFF_CONTENT="$(cat diff.txt)"
-          payload=$(jq -n \
-            --arg msg "请用简洁中文总结以下代码变更内容，适合用作 GitHub Release 发布日志：\n\n$COMMIT_MSG\n\n变更详情：\n$DIFF_CONTENT" \
-            '{model:"free:Qwen3-30B-A3B",messages:[{"role":"user","content":$msg}]}'
-          )
+          jq -Rs '
+            {model:"free:Qwen3-30B-A3B",
+             messages:[
+               {"role":"user","content":"请用简洁中文总结以下代码变更内容，适合用作 GitHub Release 发布日志：\n\n" + input[0] + "\n\n变更详情：\n" + input[1]}
+             ]
+            }
+          ' commit_msg.txt diff.txt > payload.json
           response=$(curl -sS -X POST "https://api.suanli.cn/v1/chat/completions" \
             -H "Authorization: Bearer sk-W0rpStc95T7JVYVwDYc29IyirjtpPPby6SozFMQr17m8KWeo" \
             -H "Content-Type: application/json" \
-            -d "$payload")
+            -d @payload.json)
           echo "$response" > llm2.json
           note=$(jq -r '.choices[0].message.content // empty' llm2.json)
           if [ -z "$note" ]; then
