@@ -66,10 +66,14 @@ jobs:
             ]
           }
           EOF
-          response=$(curl -s -f https://openrouter.ai/api/v1/chat/completions \
+          echo "==== request.json 内容如下 ===="
+          cat request.json
+          response=$(curl -s https://openrouter.ai/api/v1/chat/completions \
             -H "Content-Type: application/json" \
             -H "Authorization: Bearer $OPENROUTER_API_KEY" \
-            --data-binary @request.json) || { echo "API请求失败"; exit 2; }
+            --data-binary @request.json)
+          echo "==== API response 内容如下 ===="
+          echo "$response"
           generated_notes=$(echo "$response" | jq -e -r '.choices[0].message.content') || { echo "AI返回内容解析失败"; exit 3; }
           if [ -z "$generated_notes" ]; then
             echo "AI未生成内容"; exit 4;
