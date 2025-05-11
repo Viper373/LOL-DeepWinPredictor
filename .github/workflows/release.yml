@@ -47,6 +47,30 @@ jobs:
             git show HEAD > diff.txt
           fi
 
+      - name: Generate AI Release Notes
+        id: ai_notes
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: |
+          # 获取 diff 内容
+          diff_content=$(cat diff.txt)
+          # 调用 API 生成带 emoji 的结构化 Notes
+          response=$(curl -s https://openrouter.ai/api/v1/chat/completions  \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+            -d '{
+              "model": "deepseek/deepseek-chat-v3-0324:free",
+              "messages": [
+                {
+                  "role": "user",
+                  "content": "请根据以下代码差异生成符合 GitHub Release 标准的 changelog，要求：\n1. 使用 ### 分类标题\n2. 每项添加合适 emoji\n3. 简明扼要描述变更\n\n代码差异：\n'"$diff_content"'"
+                }
+              ]
+            }')
+          # 提取生成内容
+          generated_notes=$(echo "$response" | jq -r '.choices[0].message.content')
+          echo "generated_notes=$generated_notes" >> $GITHUB_ENV
+
       - name: Create tag and release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -55,5 +79,6 @@ jobs:
           git config user.email github-actions@github.com
           git tag ${{ steps.get_tag.outputs.tag }}
           git push origin ${{ steps.get_tag.outputs.tag }}
-          note="$(cat commit_msg.txt)"
+          # 使用 AI 生成的 Notes
+          note="${{ env.generated_notes }}"
           gh release create ${{ steps.get_tag.outputs.tag }} --notes "$note" --title "${{ steps.get_tag.outputs.tag }}"
