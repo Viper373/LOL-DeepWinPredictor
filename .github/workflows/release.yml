@@ -52,6 +52,7 @@ jobs:
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
         run: |
+          set -e
           DIFF_CONTENT=$(cat diff.txt)
           PROMPT="请根据以下代码差异生成符合 GitHub Release 标准的 changelog，要求：\n1. 使用 ### 分类标题\n2. 每项添加合适 emoji\n3. 简明扼要描述变更\n\n代码差异：\n$DIFF_CONTENT"
           cat <<EOF > request.json
@@ -65,14 +66,13 @@ jobs:
             ]
           }
           EOF
-          response=$(curl -s https://openrouter.ai/api/v1/chat/completions \
+          response=$(curl -s -f https://openrouter.ai/api/v1/chat/completions \
             -H "Content-Type: application/json" \
             -H "Authorization: Bearer $OPENROUTER_API_KEY" \
-            --data-binary @request.json)
-          generated_notes=$(echo "$response" | jq -r '.choices[0].message.content // empty')
+            --data-binary @request.json) || { echo "API请求失败"; exit 2; }
+          generated_notes=$(echo "$response" | jq -e -r '.choices[0].message.content') || { echo "AI返回内容解析失败"; exit 3; }
           if [ -z "$generated_notes" ]; then
-            echo "Error: Failed to generate notes, using default message."
-            generated_notes="自动生成失败，请手动填写发布说明。"
+            echo "AI未生成内容"; exit 4;
           fi
           echo "$generated_notes" > release_note.txt
 
