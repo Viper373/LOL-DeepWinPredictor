@@ -232,6 +232,4 @@ pinned: false
 
 - 🥗E-mail: 2483523414@qq.com
 - 🍟WeChat: Viper373
-- 🍔QQ: 2483523414t r i g g e r   r e l e a s e - p l e a s e  
- t e s t   r e l e a s e - p l e a s e  
- 
+- 🍔QQ: 2483523414
