@@ -52,38 +52,29 @@ jobs:
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
         run: |
-          # 构建 JSON 请求体并保存到临时文件
-          cat << EOF > request.json
+          DIFF_CONTENT=$(cat diff.txt)
+          PROMPT="请根据以下代码差异生成符合 GitHub Release 标准的 changelog，要求：\n1. 使用 ### 分类标题\n2. 每项添加合适 emoji\n3. 简明扼要描述变更\n\n代码差异：\n$DIFF_CONTENT"
+          cat <<EOF > request.json
           {
             "model": "deepseek/deepseek-chat-v3-0324:free",
             "messages": [
               {
                 "role": "user",
-                "content": "请根据以下代码差异生成符合 GitHub Release 标准的 changelog，要求：\n1. 使用 ### 分类标题\n2. 每项添加合适 emoji\n3. 简明扼要描述变更\n\n代码差异：\n"
+                "content": "$PROMPT"
               }
             ]
           }
           EOF
-
-          # 将 diff.txt 内容追加到 JSON 请求体末尾（完整转义）
-          echo -n '"' >> request.json
-          cat diff.txt | jq -R -s '@json' | jq . >> request.json
-          echo '"' >> request.json
-          echo '}' >> request.json
-
-          # 调用 API 并捕获错误
-          response=$(curl -s https://openrouter.ai/api/v1/chat/completions  \
+          response=$(curl -s https://openrouter.ai/api/v1/chat/completions \
             -H "Content-Type: application/json" \
             -H "Authorization: Bearer $OPENROUTER_API_KEY" \
             --data-binary @request.json)
-
-          # 提取生成内容（添加错误处理）
           generated_notes=$(echo "$response" | jq -r '.choices[0].message.content // empty')
           if [ -z "$generated_notes" ]; then
             echo "Error: Failed to generate notes, using default message."
             generated_notes="自动生成失败，请手动填写发布说明。"
           fi
-          echo "generated_notes=$generated_notes" >> $GITHUB_ENV
+          echo "$generated_notes" > release_note.txt
 
       - name: Create tag and release
         env:
@@ -93,6 +84,5 @@ jobs:
           git config user.email github-actions@github.com
           git tag ${{ steps.get_tag.outputs.tag }}
           git push origin ${{ steps.get_tag.outputs.tag }}
-          # 使用 AI 生成的 Notes 或默认消息
-          note="${{ env.generated_notes }}"
+          note="$(cat release_note.txt)"
           gh release create ${{ steps.get_tag.outputs.tag }} --notes "$note" --title "${{ steps.get_tag.outputs.tag }}"
