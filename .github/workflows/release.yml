@@ -13,6 +13,9 @@ jobs:
         id: release
         with:
           token: ${{ secrets.RELEASE_TOKEN }}
-          release-type: node
+          release-type: simple
           package-name: standard-version
+          include-v-in-tag: true
+          bump-minor-pre-major: true
+          bump-patch-for-minor-pre-major: true
           changelog-types: '[{"type": "types", "section":"Types", "hidden": false},{"type": "revert", "section":"Reverts", "hidden": false},{"type": "feat", "section": "Features", "hidden": false},{"type": "fix", "section": "Bug Fixes", "hidden": false},{"type": "improvement", "section": "Feature Improvements", "hidden": false},{"type": "docs", "section":"Docs", "hidden": false},{"type": "style", "section":"Styling", "hidden": false},{"type": "refactor", "section":"Code Refactoring", "hidden": false},{"type": "perf", "section":"Performance Improvements", "hidden": false},{"type": "test", "section":"Tests", "hidden": false},{"type": "build", "section":"Build System", "hidden": false},{"type": "ci", "section":"CI", "hidden":false}]'
