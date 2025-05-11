@@ -56,7 +56,7 @@ jobs:
               model: "gpt-4o-mini",
               messages: [
                 {"role": "system", "content": "You are a helpful assistant."},
-                {"role": "user", "content": ("请用简洁中文总结以下代码变更内容，适合用作 GitHub Release 发布日志：\n\n" + $commit + "\n\n变更详情：\n" + $diff)}
+                {"role": "user", "content": ("请用简洁中文总结以下代码变更内容，适合用作 GitHub Release 发布日志，只输出更新日志内容，不要输出分析过程、建议、代码片段或多余解释。\n\n" + $commit + "\n\n变更详情：\n" + $diff)}
               ]
             }
           ' > payload.json
@@ -82,7 +82,7 @@ jobs:
             {
               model: "free:Qwen3-30B-A3B",
               messages: [
-                {"role": "user", "content": ("请用简洁中文总结以下代码变更内容，适合用作 GitHub Release 发布日志：\n\n" + $commit + "\n\n变更详情：\n" + $diff)}
+                {"role": "user", "content": ("请用简洁中文总结以下代码变更内容，适合用作 GitHub Release 发布日志，只输出更新日志内容，不要输出分析过程、建议、代码片段或多余解释。\n\n" + $commit + "\n\n变更详情：\n" + $diff)}
               ]
             }
           ' > payload.json
