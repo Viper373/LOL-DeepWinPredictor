@@ -12,4 +12,5 @@ python-dotenv>=1.0.1
 Requests>=2.32.3
 rich>=14.0.0
 torch==2.3.0
+
 # torch2.3.0+cu121
