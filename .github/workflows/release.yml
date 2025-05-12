@@ -41,11 +41,7 @@ jobs:
         id: diff
         run: |
           git log -1 --pretty=format:"%s%n%n%b" > commit_msg.txt
-          if git rev-parse HEAD^ >/dev/null 2>&1; then
-            git diff HEAD^ HEAD > diff.txt
-          else
-            git show --pretty="" HEAD > diff.txt
-          fi
+          git show --pretty="" HEAD > diff.txt
 
       - name: Generate AI Release Notes
         id: ai_notes
