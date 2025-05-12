@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  always-release:
+  auto-release:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -41,7 +41,8 @@ jobs:
         id: diff
         run: |
           git log -1 --pretty=format:"%s%n%n%b" > commit_msg.txt
-          git show --pretty="" HEAD > diff.txt
+          LAST_NORMAL_COMMIT=$(git rev-list --no-merges -n 1 HEAD)
+          git show --pretty="" $LAST_NORMAL_COMMIT > diff.txt
 
       - name: Generate AI Release Notes
         id: ai_notes
