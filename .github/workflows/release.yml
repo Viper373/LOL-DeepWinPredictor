@@ -44,7 +44,7 @@ jobs:
           if git rev-parse HEAD^ >/dev/null 2>&1; then
             git diff HEAD^ HEAD > diff.txt
           else
-            git show HEAD > diff.txt
+            git show HEAD --pretty="" --no-commit-header > diff.txt
           fi
 
       - name: Generate AI Release Notes
@@ -53,15 +53,17 @@ jobs:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
         run: |
           set -e
+          PROMPT="请根据以下代码差异生成符合 GitHub Release 标准的 changelog，要求：\n1. 使用 ### 分类标题\n2. 每项添加合适 emoji\n3. 简明扼要描述变更\n\n代码差异：\n"
           DIFF_CONTENT=$(cat diff.txt)
-          PROMPT="请根据以下代码差异生成符合 GitHub Release 标准的 changelog，要求：\n1. 使用 ### 分类标题\n2. 每项添加合适 emoji\n3. 简明扼要描述变更\n\n代码差异：\n$DIFF_CONTENT"
+          FULL_PROMPT="$PROMPT$DIFF_CONTENT"
+          JSON_PROMPT=$(printf "%s" "$FULL_PROMPT" | jq -Rs .)
           cat <<EOF > request.json
           {
             "model": "deepseek/deepseek-chat-v3-0324:free",
             "messages": [
               {
                 "role": "user",
-                "content": "$PROMPT"
+                "content": $JSON_PROMPT
               }
             ]
           }
