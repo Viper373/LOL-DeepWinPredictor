@@ -41,7 +41,7 @@ jobs:
         id: diff
         run: |
           git log -1 --pretty=format:"%s%n%n%b" > commit_msg.txt
-          LAST_NORMAL_COMMIT=$(git rev-list --no-merges -n 1 HEAD)
+          LAST_NORMAL_COMMIT=$(git diff HEAD^ HEAD)
           git show --pretty="" $LAST_NORMAL_COMMIT > diff.txt
 
       - name: Generate AI Release Notes
