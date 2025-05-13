@@ -8,9 +8,6 @@ on:
 jobs:
   auto-release:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      releases: write
     steps:
       - name: Checkout code with full history
         uses: actions/checkout@v4
