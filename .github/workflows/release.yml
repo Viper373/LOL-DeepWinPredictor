@@ -8,40 +8,63 @@ on:
 jobs:
   auto-release:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      releases: write
     steps:
-      - name: Checkout
+      - name: Checkout code with full history
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # 获取完整提交历史
 
-      - name: Get latest tag
+      - name: Install jq for JSON parsing
+        run: sudo apt-get install -y jq
+
+      - name: Extract before and after SHAs from event
+        id: extract_shas
+        run: |
+          # 从事件中提取 before 和 after 的 commit hash
+          BEFORE_SHA=$(jq -r '.before' "$GITHUB_EVENT_PATH")
+          AFTER_SHA=$(jq -r '.after' "$GITHUB_EVENT_PATH")
+
+          # 如果是首次推送（before 为全零），获取初始提交
+          if [ "$BEFORE_SHA" = "0000000000000000000000000000000000000000" ]; then
+            BEFORE_SHA=$(git rev-list --max-parents=0 HEAD)
+          fi
+
+          # 保存到环境变量
+          echo "BEFORE_SHA=$BEFORE_SHA" >> "$GITHUB_ENV"
+          echo "AFTER_SHA=$AFTER_SHA" >> "$GITHUB_ENV"
+
+      - name: Generate diff for entire push
+        run: |
+          # 生成整个推送范围内的 diff
+          git diff --patch ${{ env.BEFORE_SHA }}..${{ env.AFTER_SHA }} > changes.diff
+          echo "=== Diff 内容如下 ==="
+          cat changes.diff
+
+      - name: Get latest tag and generate next version
         id: get_tag
         run: |
           git fetch --tags
           latest_tag=$(git tag --list 'v*' --sort=-v:refname | head -n 1)
           if [ -z "$latest_tag" ]; then
-            echo "tag=v1.0.0" >> $GITHUB_OUTPUT
+            echo "tag=v1.0.0" >> "$GITHUB_OUTPUT"
           else
-            IFS='.' read -r major minor patch <<<"${latest_tag#v}"
-            if [[ -z "$minor" ]]; then minor=0; fi
-            if [[ -z "$patch" ]]; then patch=0; fi
+            IFS='.' read -r major minor patch <<< "${latest_tag#v}"
             if (( patch < 9 )); then
-              patch=$((patch+1))
+              patch=$((patch + 1))
             else
               patch=0
               if (( minor < 9 )); then
-                minor=$((minor+1))
+                minor=$((minor + 1))
               else
                 minor=0
-                major=$((major+1))
+                major=$((major + 1))
               fi
             fi
-            echo "tag=v$major.$minor.$patch" >> $GITHUB_OUTPUT
+            echo "tag=v$major.$minor.$patch" >> "$GITHUB_OUTPUT"
           fi
-
-      - name: Collect git diff
-        id: diff
-        run: |
-          git log -1 --pretty=format:"%s%n%n%b" > commit_msg.txt
-          git show --pretty="" HEAD > diff.txt
 
       - name: Generate AI Release Notes
         id: ai_notes
@@ -50,7 +73,7 @@ jobs:
         run: |
           set -e
           PROMPT="请根据以下代码差异生成符合 GitHub Release 标准的 changelog，要求：\n1. 使用 ### 分类标题\n2. 每项添加合适 emoji\n3. 简明扼要描述变更\n\n代码差异：\n"
-          DIFF_CONTENT=$(cat diff.txt)
+          DIFF_CONTENT=$(cat changes.diff)
           FULL_PROMPT="$PROMPT$DIFF_CONTENT"
           JSON_PROMPT=$(printf "%s" "$FULL_PROMPT" | jq -Rs .)
           cat <<EOF > request.json
@@ -66,7 +89,7 @@ jobs:
           EOF
           echo "==== request.json 内容如下 ===="
           cat request.json
-          response=$(curl -s https://openrouter.ai/api/v1/chat/completions \
+          response=$(curl -s https://openrouter.ai/api/v1/chat/completions  \
             -H "Content-Type: application/json" \
             -H "Authorization: Bearer $OPENROUTER_API_KEY" \
             --data-binary @request.json)
