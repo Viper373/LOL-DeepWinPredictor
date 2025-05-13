@@ -69,7 +69,7 @@ jobs:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
         run: |
           set -e
-          PROMPT="请根据以下代码差异生成符合 GitHub Release 标准的 changelog，要求：\n1. 使用 ### 分类标题\n2. 每项添加合适 emoji\n3. 简明扼要描述变更\n4. 不要使用代码块（```）\n5. 输出语言为中文\n\n示例格式：\n### 新增功能\n- ✨ 新增了用户注册功能\n\n### 修复问题\n- 🐛 修复了登录页面的显示问题\n\n### 优化改进\n- ⚡ 优化了加载速度\n\n代码差异：\n"
+          PROMPT="请根据以下代码差异生成符合 GitHub Release 标准的 changelog，要求：\n1. 使用 ### 分类标题\n2. 每项添加合适 emoji\n3. 简明扼要描述变更\n4. 不要使用代码块（三个反引号包裹）\n5. 输出语言为中文\n\n示例格式：\n### 新增功能\n- ✨ 新增了用户注册功能\n\n### 修复问题\n- 🐛 修复了登录页面的显示问题\n\n### 优化改进\n- ⚡ 优化了加载速度\n\n代码差异：\n"
           DIFF_CONTENT=$(cat changes.diff)
           FULL_PROMPT="$PROMPT$DIFF_CONTENT"
           JSON_PROMPT=$(printf "%s" "$FULL_PROMPT" | jq -Rs .)
