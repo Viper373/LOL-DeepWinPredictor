@@ -32,6 +32,7 @@ pinned: false
 - [TODO](#todo)
 - [常见问题](#常见问题)
 - [联系方式](#联系方式)
+- [自动化与CI/CD](#自动化与ci/cd)
 
 ---
 
@@ -192,6 +193,132 @@ pinned: false
 - **手动触发**：可在 GitHub Actions 页面点击手动运行。
 
 只需在仓库设置好环境变量，GitHub Actions 会自动完成数据采集与更新，无需手动操作服务器。
+
+---
+
+## 自动化与CI/CD
+
+本项目集成了 GitHub Actions 自动化流程，实现了数据集自动更新与 Release 自动发布，无需手动操作服务器。
+
+### 1. 数据集自动更新（main.yml）
+- **定时任务**：每周日 0 点自动运行，拉取和更新数据集。
+- **手动触发**：可在 GitHub Actions 页面点击手动运行。
+- **自动提交**：如有数据变更，自动 commit 并推送到 main 分支。
+
+**核心流程（main.yml）**：
+```yaml
+on:
+  schedule:
+    - cron: '0 0 * * 0'
+  workflow_dispatch:
+jobs:
+  run-main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: 设置 Python 环境
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+      - name: 安装依赖
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: 运行 main.py
+        env:
+          # ...数据库和代理相关环境变量...
+        run: |
+          python main.py
+      - name: 配置 Git
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+      - name: 检查变更并提交
+        run: |
+          git add .
+          git diff --cached --quiet || git commit -m "数据自动更新"
+      - name: 推送变更
+        run: |
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+          git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```
+
+### 2. 自动发布 Release（release.yml）
+- **触发时机**：main 分支有 push 时自动触发。
+- **自动生成 Release Notes**：基于本次 push 的所有变更，调用 AI 自动生成标准 Markdown 格式的发布日志。
+- **自动打 tag 并发布 Release**：版本号自动递增，无需人工干预。
+
+**核心流程（release.yml）**：
+```yaml
+on:
+  push:
+    branches:
+      - main
+jobs:
+  auto-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code with full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: 安装 jq
+        run: sudo apt-get install -y jq
+      - name: 生成 diff
+        run: |
+          BEFORE_SHA=$(jq -r '.before' "$GITHUB_EVENT_PATH")
+          AFTER_SHA=$(jq -r '.after' "$GITHUB_EVENT_PATH")
+          if [ "$BEFORE_SHA" = "0000000000000000000000000000000000000000" ]; then
+            BEFORE_SHA=$(git rev-list --max-parents=0 HEAD)
+          fi
+          git diff --patch $BEFORE_SHA..$AFTER_SHA > changes.diff
+      - name: 生成下一个 tag
+        id: get_tag
+        run: |
+          git fetch --tags
+          latest_tag=$(git tag --list 'v*' --sort=-v:refname | head -n 1)
+          # ...自动递增版本号逻辑...
+      - name: AI 生成 Release Notes
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: |
+          PROMPT='请根据以下代码差异生成符合 GitHub Release 标准的 changelog，要求：\n1. 使用 ### 分类标题\n2. 每项添加合适 emoji\n3. 简明扼要描述变更\n4. 不要使用代码块（三个反引号包裹）\n5. 输出语言为中文\n\n示例格式：\n### 新增功能\n- ✨ 新增了用户注册功能\n...\n代码差异：\n'
+          DIFF_CONTENT=$(cat changes.diff)
+          FULL_PROMPT="$PROMPT$DIFF_CONTENT"
+          JSON_PROMPT=$(printf "%s" "$FULL_PROMPT" | jq -Rs .)
+          echo "{\"model\": \"deepseek/deepseek-chat-v3-0324:free\", \"messages\": [{\"role\": \"user\", \"content\": $JSON_PROMPT}]}" > request.json
+          response=$(curl -s https://openrouter.ai/api/v1/chat/completions  \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+            --data-binary @request.json)
+          generated_notes=$(echo "$response" | jq -e -r '.choices[0].message.content') || { echo "AI返回内容解析失败"; exit 3; }
+          if [ -z "$generated_notes" ]; then
+            echo "AI未生成内容"; exit 4;
+          fi
+          echo "$generated_notes" > release_note.txt
+      - name: Create tag and release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git tag ${{ steps.get_tag.outputs.tag }}
+          git push origin ${{ steps.get_tag.outputs.tag }}
+          note="$(cat release_note.txt)"
+          gh release create ${{ steps.get_tag.outputs.tag }} --notes "$note" --title "${{ steps.get_tag.outputs.tag }}"
+```
+
+### 3. 环境变量与 Secrets 配置
+- 在 GitHub 仓库 Settings → Secrets and variables → Actions 中添加：
+  - `MYSQL_HOST`、`MYSQL_PORT`、`MYSQL_USER`、`MYSQL_PASSWORD`、`MYSQL_DATABASE`、`MONGO_URI`、`PROXY`（如需代理）、`GITHUB_TOKEN`、`OPENROUTER_API_KEY`（如需 AI 生成 Release Notes）等。
+- 参考 `.env.example` 文件。
+
+### 4. 常见注意事项
+- **AI Release Notes** 需保证 `OPENROUTER_API_KEY` 有效，否则发布日志会失败。
+- 自动化流程会覆盖 main 分支的内容，请勿在 main 上直接开发。
+- 如需自定义自动化逻辑，可修改 `.github/workflows/main.yml` 和 `.github/workflows/release.yml`。
 
 ---
 
