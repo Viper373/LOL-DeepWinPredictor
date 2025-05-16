@@ -1,10 +1,8 @@
 import json
 import os
-import requests
-
 import numpy as np
 import torch
-from flask import Flask, jsonify, render_template, request
+from flask import Flask, jsonify, render_template, request, send_from_directory
 from flask_cors import CORS
 
 from BILSTM_Att.BILSTM_Att import BiLSTMModelWithAttention
@@ -57,6 +55,15 @@ except Exception as e:
 
 
 # ================== 路由定义 ==================
+@app.route('/riot.txt')
+def serve_riot_txt():
+    """
+    用于Riot API域名验证，返回根目录下的riot.txt文件内容
+    params: None
+    return: 文件内容（text/plain）
+    """
+    return send_from_directory(os.path.abspath(os.path.dirname(__file__) + '/../'), 'riot.txt', mimetype='text/plain')
+
 @app.route('/')
 def index():
     """

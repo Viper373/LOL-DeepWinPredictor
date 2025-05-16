@@ -9,6 +9,8 @@ app_file: api/app.py
 pinned: false
 ---
 
+![LOL-DeepWinPredictor](https://socialify.git.ci/Viper373/LOL-DeepWinPredictor/image?description=1&font=Source+Code+Pro&forks=1&issues=1&logo=https%3A%2F%2Fimg.viper3.top%2FLOL-DeepWinPredictor%2Flogo.png&name=1&owner=1&pulls=1&stargazers=1&theme=Light)
+
 # 🎮 基于深度学习的英雄联盟胜率预测
 
 [![Python](https://img.shields.io/badge/Python-3.10.7+-blue.svg)](https://www.python.org/) [![PyTorch](https://img.shields.io/badge/PyTorch-2.3.0-red.svg)](https://pytorch.org/) [![Flask](https://img.shields.io/badge/Flask-3.0.3-green.svg)](https://flask.palletsprojects.com/)
