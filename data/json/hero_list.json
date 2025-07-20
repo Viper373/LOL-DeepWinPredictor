@@ -266,8 +266,8 @@
       "alias": "MasterYi",
       "title": "易",
       "roles": [
-        "assassin",
-        "fighter"
+        "fighter",
+        "assassin"
       ],
       "isWeekFree": "0",
       "attack": "10",
@@ -627,8 +627,8 @@
       "alias": "Morgana",
       "title": "莫甘娜",
       "roles": [
-        "mage",
-        "support"
+        "support",
+        "mage"
       ],
       "isWeekFree": "0",
       "attack": "1",
@@ -759,14 +759,14 @@
       "roles": [
         "mage"
       ],
-      "isWeekFree": "0",
+      "isWeekFree": "1",
       "attack": "2",
       "defense": "2",
       "magic": "10",
       "difficulty": "7",
       "selectAudio": "https://game.gtimg.cn/images/lol/act/img/vo/choose/30.ogg",
       "banAudio": "https://game.gtimg.cn/images/lol/act/img/vo/ban/30.ogg",
-      "isARAMweekfree": "0",
+      "isARAMweekfree": "1",
       "ispermanentweekfree": "0",
       "changeLabel": "无改动",
       "goldPrice": "0",
@@ -2637,8 +2637,8 @@
       "alias": "Jayce",
       "title": "杰斯",
       "roles": [
-        "marksman",
-        "fighter"
+        "fighter",
+        "marksman"
       ],
       "isWeekFree": "0",
       "attack": "8",
@@ -4096,6 +4096,31 @@
       "instance_id": "28d2a454-bcdb-4012-9754-a2ed1f9d4b92"
     },
     {
+      "heroId": "804",
+      "name": "不破之誓",
+      "alias": "Yunara",
+      "title": "芸阿娜",
+      "roles": [
+        "marksman"
+      ],
+      "isWeekFree": "0",
+      "attack": "9",
+      "defense": "2",
+      "magic": "0",
+      "difficulty": "4",
+      "selectAudio": "https://game.gtimg.cn/images/lol/act/img/vo/choose/804.ogg",
+      "banAudio": "https://game.gtimg.cn/images/lol/act/img/vo/ban/804.ogg",
+      "isARAMweekfree": "0",
+      "ispermanentweekfree": "0",
+      "changeLabel": "无改动",
+      "goldPrice": "0",
+      "couponPrice": "0",
+      "camp": "",
+      "campId": "",
+      "keywords": "芸阿娜,不破之誓,yunana,bupozhishi",
+      "instance_id": "11768e2e-4ffc-4ba4-bc7a-91cf7350b094"
+    },
+    {
       "heroId": "875",
       "name": "腕豪",
       "alias": "Sett",
@@ -4381,7 +4406,7 @@
       "instance_id": "b83cd9bc-39e6-4f38-9288-61842ebf575b"
     }
   ],
-  "version": "15.13",
+  "version": "15.14",
   "fileName": "hero_list.js",
-  "fileTime": "2025-06-25 17:46:53"
+  "fileTime": "2025-07-17 10:54:43"
 }
