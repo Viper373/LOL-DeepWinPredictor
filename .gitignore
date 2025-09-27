@@ -6,3 +6,11 @@ logs/
 checkpoints
 .vercel
 static/saved_model/BILSTM_Att.pt
+.tmp/
+riot.txt
+/static/temp3.png
+/static/temp4.png
+/static/temp5.png
+/static/temp6.png
+/static/temp7.png
+/static/temp8.png

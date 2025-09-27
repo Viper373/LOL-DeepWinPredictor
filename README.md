@@ -40,10 +40,14 @@ pinned: false
 
 ## 项目简介
 
-本项目为毕业设计，旨在通过深度学习技术预测英雄联盟（LOL）比赛的胜率，为玩家、教练和分析师提供数据支持。通过分析双方阵容选择，结合英雄特性和历史数据，模型能够给出较为准确的胜率预测。
+本项目为本人毕业设计，论文题目为《基于深度学习的英雄联盟比赛胜率预测的研究》。
+院校：北京石油化工学院
+专业：大数据管理与应用
+年级：2020级
+旨在通过深度学习技术预测英雄联盟（LOL）比赛的胜率，为玩家、教练和分析师提供数据支持。通过分析双方阵容选择，结合英雄特性和历史数据，模型能够给出较为准确的胜率预测。
 > [!TIP]
 > 
-> 由于数据集和模型文件较大，完整的项目文档和部署指南已迁移至Hugging Face平台。请访问 [Hugging Face](https://huggingface.co/spaces/Viper373/LOL-DeepWinPredictor/tree/main) 获取完整信息。
+> 由于数据集和模型文件较大，完整的项目文档和部署指南已迁移至Hugging Face平台。请访问 [Hugging Face](https://huggingface.co/spaces/Viper3733/LOL-DeepWinPredictor/tree/main) 获取完整信息。
 ---
 
 ## 主要功能
