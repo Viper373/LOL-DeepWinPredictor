@@ -75,7 +75,7 @@ jobs:
           JSON_PROMPT=$(printf "%s" "$FULL_PROMPT" | jq -Rs .)
           cat <<EOF > request.json
           {
-            "model": "deepseek/deepseek-chat-v3-0324:free",
+            "model": "x-ai/grok-4-fast:free",
             "messages": [
               {
                 "role": "user",
