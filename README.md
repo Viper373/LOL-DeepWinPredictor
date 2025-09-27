@@ -300,7 +300,7 @@ jobs:
           DIFF_CONTENT=$(cat changes.diff)
           FULL_PROMPT="$PROMPT$DIFF_CONTENT"
           JSON_PROMPT=$(printf "%s" "$FULL_PROMPT" | jq -Rs .)
-          echo "{\"model\": \"deepseek/deepseek-chat-v3-0324:free\", \"messages\": [{\"role\": \"user\", \"content\": $JSON_PROMPT}]}" > request.json
+          echo "{\"model\": \"x-ai/grok-4-fast:free\", \"messages\": [{\"role\": \"user\", \"content\": $JSON_PROMPT}]}" > request.json
           response=$(curl -s https://openrouter.ai/api/v1/chat/completions  \
             -H "Content-Type: application/json" \
             -H "Authorization: Bearer $OPENROUTER_API_KEY" \
