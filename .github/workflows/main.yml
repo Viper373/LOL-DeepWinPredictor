@@ -1,4 +1,4 @@
-name: 更新数据集
+name: 更新数据集并同步至huggingface
 
 on:
   schedule:
@@ -47,7 +47,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 同步到 Hugging Face Space (可选)
-        if: ${{ secrets.HF_TOKEN != '' }}
+        if: env.HF_TOKEN != ''
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
