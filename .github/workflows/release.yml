@@ -75,7 +75,7 @@ jobs:
           JSON_PROMPT=$(printf "%s" "$FULL_PROMPT" | jq -Rs .)
           cat <<EOF > request.json
           {
-            "model": "x-ai/grok-4-fast:free",
+            "model": "z-ai/glm-4.5-air:free",
             "messages": [
               {
                 "role": "user",

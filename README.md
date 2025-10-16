@@ -193,6 +193,7 @@ pinned: false
 | MONGO_URI      | MongoDB连接URI   | 必填   |
 | PROXY          | 代理配置（JSON字符串，例：{'http': 'http://127.0.0.1:7890', 'https': 'http://127.0.0.1:7890'}） | 可选   |
 | GH_TOKEN   | GitHub访问令牌（用于自动发布Release） | 必填   |
+| HF_TOKEN   | Hugging Face 访问令牌（用于自动同步数据到 HF Space） | 可选   |
 
 > ⚠️ 代理配置（PROXY）为可选项，若部署环境无法直接访问外网或有特殊网络需求时可设置。
 
@@ -203,6 +204,12 @@ pinned: false
 本项目已集成 GitHub Actions 工作流（见 `.github/workflows/main.yml`），支持：
 - **定时自动运行**：每周日 0点自动拉取和更新数据集。
 - **手动触发**：可在 GitHub Actions 页面点击手动运行。
+
+- **（可选）自动同步到 Hugging Face Space**：若已在仓库 Secrets 配置 `HF_TOKEN`，工作流会在将变更推送到 GitHub 后，自动把更新内容（保持原路径结构）同步到 `spaces/Viper3733/LOL-DeepWinPredictor`。
+
+获取并配置 `HF_TOKEN`：
+- 在 Hugging Face 设置页面创建 Token（`https://huggingface.co/settings/tokens`），授予 write 权限。
+- 在 GitHub 仓库 Settings → Secrets and variables → Actions 中新增 Secret：`HF_TOKEN`。
 
 只需在仓库设置好环境变量，GitHub Actions 会自动完成数据采集与更新，无需手动操作服务器。
 
