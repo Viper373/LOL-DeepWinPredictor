@@ -52,12 +52,17 @@ jobs:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
           set -e
-          sudo apt-get update && sudo apt-get install -y rsync
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git clone https://huggingface.co/spaces/Viper3733/LOL-DeepWinPredictor hf_repo
-          rsync -av --delete --exclude='.git' --exclude='hf_repo' ./ hf_repo/
           cd hf_repo
-          git add .
+          
+          # 只同步需要的数据文件
+          mkdir -p data/json
+          cp ../data/json/hero_win_rate.json data/json/
+          cp ../data/json/team_list.json data/json/
+          cp ../data/json/hero_list.json data/json/
+          
+          git add data/json/
           git diff --cached --quiet || git commit -m "数据自动更新 (来自 GitHub Actions)"
           git push https://user:$HF_TOKEN@huggingface.co/spaces/Viper3733/LOL-DeepWinPredictor main
