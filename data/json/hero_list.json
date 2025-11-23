@@ -4354,6 +4354,32 @@
       "instance_id": "c314073d-ff9d-433a-81cc-5081fc93b54a"
     },
     {
+      "heroId": "904",
+      "name": "不落魔锋",
+      "alias": "Zaahen",
+      "title": "亚恒",
+      "roles": [
+        "fighter",
+        "assassin"
+      ],
+      "isWeekFree": "0",
+      "attack": "8",
+      "defense": "6",
+      "magic": "1",
+      "difficulty": "2",
+      "selectAudio": "https://game.gtimg.cn/images/lol/act/img/vo/choose/904.ogg",
+      "banAudio": "https://game.gtimg.cn/images/lol/act/img/vo/ban/904.ogg",
+      "isARAMweekfree": "0",
+      "ispermanentweekfree": "0",
+      "changeLabel": "无改动",
+      "goldPrice": "0",
+      "couponPrice": "0",
+      "camp": "",
+      "campId": "",
+      "keywords": "",
+      "instance_id": "88b407dd-2976-471b-8ef7-c9ce7433a35e"
+    },
+    {
       "heroId": "910",
       "name": "异画师",
       "alias": "Hwei",
@@ -4406,7 +4432,7 @@
       "instance_id": "b83cd9bc-39e6-4f38-9288-61842ebf575b"
     }
   ],
-  "version": "15.22",
+  "version": "15.23",
   "fileName": "hero_list.js",
-  "fileTime": "2025-11-05 11:01:37"
+  "fileTime": "2025-11-19 15:50:47"
 }
